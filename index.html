@@ -54,7 +54,27 @@ body {
 }
 .wrap { max-width: 920px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
 
-header { display: flex; flex-direction: column; gap: 6px; padding-top: 8px; }
+header { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 300px); align-items: end; gap: 12px; padding-top: 8px; }
+.htext { display: flex; flex-direction: column; gap: 6px; min-width: 0; padding-bottom: 6px; }
+.us { position: relative; min-width: 0; padding-top: 64px; }
+.us img { display: block; width: 100%; height: auto; transform-origin: 50% 100%;
+  -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent 100%); mask-image: linear-gradient(to bottom, #000 82%, transparent 100%);
+  animation: lean 4s ease-in-out infinite; }
+@keyframes lean { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-1.5deg) translateY(-2px); } }
+.say-bubble {
+  position: absolute; top: 0; left: -8%; max-width: 86%; z-index: 2; cursor: pointer;
+  font: inherit; font-family: var(--font-display); font-weight: 800; font-size: 15px; line-height: 1.15; text-align: left; color: var(--ink);
+  background: var(--paper); border: 2.5px solid var(--line); border-radius: 18px 18px 18px 4px; padding: 9px 13px; box-shadow: 3px 3px 0 var(--rose);
+}
+.say-bubble::after { content: ""; position: absolute; left: 22px; bottom: -11px; width: 16px; height: 16px; background: var(--paper); border-right: 2.5px solid var(--line); border-bottom: 2.5px solid var(--line); transform: rotate(45deg) skew(10deg, 10deg); }
+.say-bubble.swap { animation: bubble .45s cubic-bezier(.2, .9, .3, 1.5); }
+@keyframes bubble { 0% { transform: scale(.6) rotate(-6deg); } 100% { transform: none; } }
+.say-bubble:focus-visible { outline: 3px solid var(--sky); outline-offset: 3px; }
+@media (max-width: 600px) {
+  header { grid-template-columns: 1fr; }
+  .us { order: -1; width: min(210px, 58%); margin-left: auto; margin-bottom: -6px; padding-top: 58px; }
+  .say-bubble { left: -62%; max-width: 118%; font-size: 14px; }
+}
 .kicker { font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--pink-deep); }
 h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(38px, 9vw, 72px); line-height: .95; letter-spacing: -.02em; margin: 0; text-wrap: balance; }
 h1 .slash { color: var(--pink-deep); display: inline-block; transform: rotate(8deg); margin: 0 .06em; animation: wiggle 3.2s ease-in-out infinite; }
@@ -186,9 +206,15 @@ h1 .n { background: var(--paper); border: 2.5px solid var(--line); border-radius
 <body>
 <div class="wrap">
   <header>
-    <span class="kicker" id="today">today</span>
-    <h1><span class="n">Daily:</span> <span class="nw">Emily<span class="slash">/</span>Jaimie</span></h1>
-    <span class="sub">our 1:1 without our 1:1</span>
+    <div class="htext">
+      <span class="kicker" id="today">today</span>
+      <h1><span class="n">Daily:</span> <span class="nw">Emily<span class="slash">/</span>Jaimie</span></h1>
+      <span class="sub">our 1:1 without our 1:1</span>
+    </div>
+    <div class="us">
+      <button class="say-bubble" id="say" type="button" aria-live="polite">hi!!</button>
+      <img src="us.webp" alt="Jaimie and Emily" width="554" height="498">
+    </div>
   </header>
 
   <main class="grid">
@@ -600,6 +626,26 @@ async function loadFeeds() {
   if (openKey && openKey !== "holiday") renderSheet(openKey);
 }
 renderTeasers(); tick(); setInterval(tick, 1000); loadFeeds();
+
+/* speech bubble: rotates through what's new */
+let sayIdx = 0;
+function sayLines() {
+  const up = upcoming(), lines = [];
+  lines.push({ t: "wait, i need to show you this house", k: "houses" });
+  const tk = (state.tiktok.items || [])[0];
+  lines.push({ t: tk ? "omg have you seen " + tk.title.replace(/"/g, "") + "??" : "omg have you seen what's happening on tiktok??", k: "tiktok" });
+  if (up.length) { const d = Math.ceil((up[0].at - Date.now()) / 864e5); lines.push({ t: d <= 1 ? HOL[up[0].key].name + " is TONIGHT!!" : d + " days til " + HOL[up[0].key].name + "!!", k: "holiday" }); }
+  lines.push({ t: "ok what are the cool kids doing", k: "coolkids" });
+  return lines;
+}
+function nextSay() {
+  const lines = sayLines(), b = $("say"), cur = lines[sayIdx % lines.length];
+  b.textContent = cur.t; b.dataset.k = cur.k;
+  if (!reduced) { b.classList.remove("swap"); void b.offsetWidth; b.classList.add("swap"); }
+  sayIdx++;
+}
+$("say").addEventListener("click", (e) => { const k = e.currentTarget.dataset.k; if (k) openSheet(k, e.currentTarget); });
+setTimeout(() => { nextSay(); setInterval(nextSay, 4000); }, 900);
 document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") loadFeeds(); });
 </script>
 </body>
