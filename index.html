@@ -50,13 +50,13 @@ body {
 }
 .wrap { max-width: 920px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
 
-header { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 280px); align-items: center; gap: 16px; padding-top: 8px; }
+header { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 340px); align-items: center; gap: 16px; padding-top: 8px; }
 .htext { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
 .us { position: relative; justify-self: end; width: 100%; }
-.us img { display: block; width: 100%; height: auto; filter: drop-shadow(5px 5px 0 rgba(43, 18, 64, .9)); }
+.us img { display: block; width: 100%; height: auto; transform: rotate(-2deg); }
 @media (max-width: 600px) {
   header { grid-template-columns: 1fr; }
-  .us { order: -1; justify-self: start; width: min(220px, 62%); }
+  .us { order: -1; justify-self: start; width: min(300px, 82%); }
 }
 .kicker { font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--pink-deep); }
 h1 {
@@ -180,7 +180,7 @@ button.card:focus-visible { outline: 3px solid var(--sky); outline-offset: 4px; 
       <h1><span class="n">Daily:</span> <span class="nw">Emily<span class="slash">/</span>Jaimie</span></h1>
       <span class="sub">our 1:1 without our 1:1</span>
     </div>
-    <div class="us"><img src="us.webp" alt="Emily and Jaimie" width="720" height="719"></div>
+    <div class="us"><img src="us.webp" alt="Emily and Jaimie" width="720" height="540"></div>
   </header>
 
   <main class="grid">
