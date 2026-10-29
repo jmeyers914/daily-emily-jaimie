@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Daily">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#fff6fa">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-192.png">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Daily: Emily / Jaimie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: a bright desk of four candy-colored cards; three open into a bottom sheet feed, the holiday card is the countdown itself. Single committed bright look. */
+:root {
+  color-scheme: light;
+  --bg: #fff6fa;
+  --ink: #2b1240;
+  --ink-soft: #6a5578;
+  --pink: #ff8ac0;
+  --pink-deep: #e2378a;
+  --sun: #ffd84d;
+  --tang: #ff9d5c;
+  --mint: #7fe0c0;
+  --sky: #8ec5ff;
+  --paper: #ffffff;
+  --line: #2b1240;
+  --font-display: "Bricolage Grotesque", "Arial Rounded MT Bold", system-ui, sans-serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --r: 22px;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.45;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 40px;
+  background-image: radial-gradient(var(--pink) 1.4px, transparent 1.6px);
+  background-size: 22px 22px;
+  background-color: var(--bg);
+}
+.wrap { max-width: 920px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
+
+header { display: flex; flex-direction: column; gap: 6px; padding-top: 8px; }
+.kicker { font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--pink-deep); }
+h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(38px, 9vw, 72px);
+  line-height: .95;
+  letter-spacing: -.02em;
+  margin: 0;
+  text-wrap: balance;
+}
+h1 .slash { color: var(--pink-deep); display: inline-block; transform: rotate(8deg); margin: 0 .06em; }
+h1 .n { background: var(--paper); border: 2.5px solid var(--line); border-radius: 14px; padding: 0 .14em; box-shadow: 4px 4px 0 var(--line); display: inline-block; }
+.sub { color: var(--ink-soft); font-weight: 500; }
+
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+
+.card {
+  position: relative;
+  border: 2.5px solid var(--line);
+  border-radius: var(--r);
+  box-shadow: 6px 6px 0 var(--line);
+  padding: 20px 20px 18px;
+  display: flex; flex-direction: column; gap: 12px;
+  text-align: left; font: inherit; color: var(--ink);
+  min-width: 0;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+button.card { cursor: pointer; }
+button.card:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--line); }
+button.card:active { transform: translate(3px, 3px); box-shadow: 3px 3px 0 var(--line); }
+button.card:focus-visible { outline: 3px solid var(--sky); outline-offset: 4px; }
+.c-house { background: var(--pink); }
+.c-tok { background: var(--sun); }
+.c-kids { background: var(--mint); }
+.c-hol { background: var(--tang); }
+
+.card h2 {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(24px, 4.4vw, 32px); line-height: 1.02; letter-spacing: -.01em;
+  margin: 0; text-wrap: balance;
+}
+.tag {
+  align-self: flex-start;
+  font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  background: var(--paper); border: 2px solid var(--line); border-radius: 999px; padding: 3px 10px;
+}
+.teaser { background: var(--paper); border: 2px solid var(--line); border-radius: 14px; padding: 12px 14px; font-weight: 500; min-height: 3.2em; }
+.teaser b { font-family: var(--font-display); font-weight: 700; }
+.foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; flex-wrap: wrap; }
+.open { display: inline-flex; align-items: center; gap: 6px; background: var(--ink); color: var(--paper); border-radius: 999px; padding: 6px 14px; font-weight: 700; }
+
+/* Holiday card */
+.count { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.big {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(76px, 18vw, 128px); line-height: .85; letter-spacing: -.04em;
+  font-variant-numeric: tabular-nums;
+}
+.unit { font-family: var(--font-display); font-weight: 700; font-size: 22px; }
+.holname { font-family: var(--font-display); font-weight: 800; font-size: 26px; line-height: 1.05; }
+.holwhen { font-weight: 600; }
+.after { font-size: 14px; color: var(--ink); background: rgba(255,255,255,.55); border-radius: 12px; padding: 8px 12px; }
+
+/* Sheet */
+.scrim { position: fixed; inset: 0; background: rgba(43, 18, 64, .45); z-index: 20; }
+.sheet {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 21;
+  max-height: 88%; overflow-y: auto;
+  background: var(--bg);
+  border-top: 2.5px solid var(--line);
+  border-radius: 26px 26px 0 0;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-top: 0;
+  padding-bottom: calc(28px + env(safe-area-inset-bottom, 0px));
+  animation: up .28s cubic-bezier(.2, .9, .3, 1.2);
+}
+@keyframes up { from { transform: translateY(40px); opacity: .6; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .sheet { animation: none; } .card { transition: none; } }
+.sheet-in { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+.sheet-head {
+  position: sticky; top: 0; background: var(--bg); z-index: 1;
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;
+  padding-block: 18px 10px;
+}
+.sheet-head h3 { font-family: var(--font-display); font-weight: 800; font-size: clamp(26px, 6vw, 36px); line-height: 1; margin: 0; text-wrap: balance; }
+.sheet-head .stamp { font-size: 13px; color: var(--ink-soft); font-weight: 600; margin-top: 6px; }
+.close {
+  flex: none; font: inherit; font-weight: 800; font-size: 20px; line-height: 1;
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--paper); color: var(--ink); border: 2.5px solid var(--line); box-shadow: 3px 3px 0 var(--line); cursor: pointer;
+}
+.close:focus-visible { outline: 3px solid var(--sky); outline-offset: 3px; }
+
+.item {
+  background: var(--paper); border: 2.5px solid var(--line); border-radius: 18px; box-shadow: 4px 4px 0 var(--line);
+  padding: 16px 18px; display: flex; flex-direction: column; gap: 8px; min-width: 0;
+}
+.item h4 { font-family: var(--font-display); font-weight: 800; font-size: 21px; line-height: 1.1; margin: 0; text-wrap: balance; }
+.item p { margin: 0; max-width: 62ch; }
+.item a { color: var(--pink-deep); font-weight: 700; text-underline-offset: 3px; }
+.item a:focus-visible { outline: 3px solid var(--sky); outline-offset: 2px; border-radius: 4px; }
+.price { font-family: var(--font-display); font-weight: 800; font-size: 30px; line-height: 1; font-variant-numeric: tabular-nums; }
+.facts { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-size: 13px; font-weight: 700; border: 2px solid var(--line); border-radius: 999px; padding: 2px 10px; background: var(--bg); font-variant-numeric: tabular-nums; }
+.chip.town { background: var(--pink); }
+.say { font-style: italic; }
+.src { font-size: 13px; color: var(--ink-soft); }
+.houseRow { display: flex; justify-content: space-between; align-items: flex-end; gap: 10px; flex-wrap: wrap; }
+
+.sig { text-align: center; font-family: var(--font-display); font-weight: 700; color: var(--ink-soft); font-size: 15px; }
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="kicker" id="today">today</span>
+    <h1><span class="n">Daily:</span> Emily<span class="slash">/</span>Jaimie</h1>
+    <span class="sub">our 1:1 without our 1:1</span>
+  </header>
+
+  <main class="grid">
+    <button class="card c-house" id="card-houses" type="button" aria-haspopup="dialog">
+      <span class="tag">latest listings in westchester county</span>
+      <h2>Wait, I need to show you this house</h2>
+      <div class="teaser" id="t-houses">Pulling listings…</div>
+      <div class="foot"><span id="s-houses"></span><span class="open">open ↗</span></div>
+    </button>
+
+    <button class="card c-tok" id="card-tiktok" type="button" aria-haspopup="dialog">
+      <span class="tag">stay plugged in</span>
+      <h2>omg have you seen what's happening on TikTok??</h2>
+      <div class="teaser" id="t-tiktok">Pulling the tea…</div>
+      <div class="foot"><span id="s-tiktok"></span><span class="open">open ↗</span></div>
+    </button>
+
+    <button class="card c-kids" id="card-coolkids" type="button" aria-haspopup="dialog">
+      <span class="tag">millennial guide to whats up with genz</span>
+      <h2>What are the cool kids doing?</h2>
+      <div class="teaser" id="t-coolkids">Asking the youths…</div>
+      <div class="foot"><span id="s-coolkids"></span><span class="open">open ↗</span></div>
+    </button>
+
+    <section class="card c-hol" aria-label="Days until the next Jewish holiday">
+      <span class="tag">when's the next jewish holiday</span>
+      <div class="count"><span class="big" id="h-days">–</span><span class="unit" id="h-unit">days until</span></div>
+      <div class="holname" id="h-name"></div>
+      <div class="holwhen" id="h-when"></div>
+      <div class="after" id="h-after"></div>
+    </section>
+  </main>
+
+  <p class="sig">xo, jaimie</p>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" hidden>
+  <div class="sheet-in">
+    <div class="sheet-head">
+      <div><h3 id="sheet-title"></h3><div class="stamp" id="sheet-stamp"></div></div>
+      <button class="close" id="close" type="button" aria-label="Close">×</button>
+    </div>
+    <div id="sheet-body" style="display:flex;flex-direction:column;gap:14px"></div>
+  </div>
+</div>
+
+<script>
+// Snapshot shown until (or if) the shared feed loads. The daily refresh writes newer data to the store.
+const SNAPSHOT = {
+  houses: { updatedAt: "2026-10-28T21:30:00-04:00", items: [
+    { address: "2 Hollow Ridge Rd", town: "Armonk", price: 5400000, beds: 7, baths: 8.5, sqft: 11000, note: "ok the KITCHEN. double-height barrel-vaulted ceiling, a fireplace next to the breakfast table, AND a wine cellar with a tasting room downstairs. 2.3 acres. i can't.", url: "https://www.realtor.com/realestateandhomes-detail/2-Hollow-Ridge-Rd_Armonk_NY_10504_M32327-56418" },
+    { address: "24 Cayuga Rd", town: "Scarsdale", price: 4950000, beds: 6, baths: 5, sqft: 5812, note: "the biggest thing on the scarsdale new-listings page rn. six bedrooms. just putting it in front of you.", url: "https://www.redfin.com/NY/Scarsdale/24-Cayuga-Rd-10583/home/20017169" },
+    { address: "49 Beechmont Ave", town: "Bronxville", price: 2600000, beds: 5, baths: 3.5, sqft: 3059, note: "bronxville!! five bedrooms, would look SO good with a wreath on the door.", url: "https://www.redfin.com/NY/Yonkers/49-Beechmont-Ave-10708/home/20160962" },
+    { address: "11 Fraydun Ln", town: "Scarsdale", price: 2495000, beds: 5, baths: 5.5, sqft: 4020, note: "5.5 bathrooms for 5 bedrooms. nobody in this house is ever waiting for a shower.", url: "https://www.redfin.com/NY/Scarsdale/11-Fraydun-Ln-10583/home/52269832" },
+    { address: "10 Warnke Ln", town: "Scarsdale", price: 2300000, beds: 4, baths: 5.5, sqft: 3675, note: "more bathrooms than bedrooms AGAIN. scarsdale has a thing and i respect it.", url: "https://www.redfin.com/NY/Scarsdale/10-Warnke-Ln-10583/home/20122826" }
+  ]},
+  tiktok: { updatedAt: "2026-10-28T21:30:00-04:00", items: [
+    { title: "\"Two Fishes\" is everywhere", body: "it's a deadpan clip of Corbin from Love Island USA season 8 (people literally call him CorbinGPT) and everyone is lip-syncing it to defend the most unhinged opinions with total confidence. the worse the take, the better it does.", url: "https://newengen.com/insights/tiktok-trends/", source: "NewEngen" },
+    { title: "everyone is doing the Kylie hip pop", body: "people are recreating Kylie Jenner's runway moment, the little hip pop and the slightly nervous turn, set to JADE's \"Angel of My Dreams.\" glam but awkward. it's working on literally any outfit.", url: "https://newengen.com/insights/tiktok-trends/", source: "NewEngen" },
+    { title: "\"stop the wedding, but…\" confessions", body: "photo carousels that open with \"stop the wedding, but…\" and then reveal a wedding regret or a weirdly specific memory. people are being SO honest. very good scroll.", url: "https://newengen.com/insights/tiktok-trends/", source: "NewEngen" },
+    { title: "the halloween costume of the year is not close", body: "KPop Demon Hunters. Rumi, Mira and Zoey costumes are officially licensed now and they are all over the costume reveals. expect a lot of them at your door friday.", url: "https://www.glendalehalloween.com/viral-halloween-costume-trends-2026/", source: "Glendale Halloween" }
+  ]},
+  coolkids: { updatedAt: "2026-10-28T21:30:00-04:00", items: [
+    { title: "gen alpha's obsession is a minecraft horror movie", body: "it's called \"Verity\" (NOT the colleen hoover one). it's an hour-long minecraft horror video by a youtuber called ThatMob, and the scary thing is a yellow smiley face that's basically an AI assistant. very on the nose.", url: "https://www.ypulse.com/article/2026/10/02/gen-alphas-new-brainrot-obsession-on-the-viral-list/", source: "YPulse" },
+    { title: "13–15 year olds are weirdly optimistic about dating", body: "Match Group surveyed young teens: only 20% have been in a relationship (gen z was 56% at that age), 64% think you should be friends first, and 84% think their future is bright. cute?? honestly cute.", url: "https://www.fastcompany.com/91626157/gen-alpha-has-a-surprisingly-optimistic-outlook-on-dating", source: "Fast Company" },
+    { title: "everything is \"-maxxing\" now", body: "looksmaxxing, sleepmaxxing, personalitymaxxing. it just means optimizing something to the max. looksmaxxing officially made it into Merriam-Webster, and \"lowkenuinely\" is one of the favorites for their word of the year.", url: "https://www.dictionary.com/e/slang/maxxing/", source: "Dictionary.com" },
+    { title: "gen z is letting AI do the shopping", body: "80% of gen z used AI to buy something in the last three months. but 45% also say online recommendations limit what they're \"allowed\" to like. so they use it and resent it. relatable.", url: "https://www.retaildive.com/news/gen-z-gen-alpha-holiday-shopping-retail-trends/831838/", source: "Retail Dive" }
+  ]}
+};
+
+const TITLES = { houses: "Wait, I need to show you this house", tiktok: "omg have you seen what's happening on TikTok??", coolkids: "What are the cool kids doing?" };
+const state = JSON.parse(JSON.stringify(SNAPSHOT));
+let openKey = null;
+
+const $ = (id) => document.getElementById(id);
+const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+const money = (n) => n >= 1e6 ? "$" + (n / 1e6).toFixed(n % 1e6 === 0 ? 0 : (n % 1e5 === 0 ? 1 : 2)).replace(/\.?0+$/, "") + "M" : "$" + Math.round(n / 1e3) + "K";
+
+function nyParts(d) {
+  const f = new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", year: "numeric", month: "2-digit", day: "2-digit" });
+  const p = Object.fromEntries(f.formatToParts(d).map(x => [x.type, x.value]));
+  return p.year + "-" + p.month + "-" + p.day;
+}
+function stamp(iso) {
+  if (!iso) return "";
+  const d = new Date(iso);
+  if (isNaN(d)) return "";
+  const today = nyParts(new Date()), that = nyParts(d);
+  const y = new Date(Date.now() - 864e5);
+  const when = that === today ? "today" : that === nyParts(y) ? "yesterday" :
+    d.toLocaleDateString("en-US", { timeZone: "America/New_York", weekday: "short", month: "short", day: "numeric" }).toLowerCase();
+  const t = d.toLocaleTimeString("en-US", { timeZone: "America/New_York", hour: "numeric", minute: "2-digit" }).toLowerCase().replace(":00", "");
+  return "fresh " + when + ", " + t;
+}
+
+function renderTeasers() {
+  const h = state.houses.items || [];
+  const tH = $("t-houses"); tH.textContent = "";
+  if (h.length) {
+    const top = h.reduce((a, b) => (b.price > a.price ? b : a));
+    tH.append(el("b", null, h.length + " new ones"), document.createTextNode(", including a " + money(top.price) + " situation in " + top.town + "."));
+  } else tH.textContent = "No new listings yet today. Check back in the morning.";
+  for (const k of ["tiktok", "coolkids"]) {
+    const t = $("t-" + k); t.textContent = "";
+    const first = (state[k].items || [])[0];
+    if (first) t.append(el("b", null, first.title), document.createTextNode(" + " + Math.max(0, state[k].items.length - 1) + " more"));
+    else t.textContent = "Nothing new yet today. Check back in the morning.";
+  }
+  for (const k of ["houses", "tiktok", "coolkids"]) $("s-" + k).textContent = stamp(state[k].updatedAt);
+}
+
+function renderSheet(key) {
+  const body = $("sheet-body"); body.textContent = "";
+  $("sheet-title").textContent = TITLES[key];
+  $("sheet-stamp").textContent = stamp(state[key].updatedAt);
+  const items = state[key].items || [];
+  if (!items.length) { body.append(el("p", "src", "Nothing here yet. The feed refreshes every morning.")); return; }
+  for (const it of items) {
+    const box = el("article", "item");
+    if (key === "houses") {
+      const row = el("div", "houseRow");
+      row.append(el("span", "price", money(it.price)));
+      const facts = el("div", "facts");
+      facts.append(el("span", "chip town", it.town));
+      if (it.beds) facts.append(el("span", "chip", it.beds + " bd"));
+      if (it.baths) facts.append(el("span", "chip", it.baths + " ba"));
+      if (it.sqft) facts.append(el("span", "chip", Number(it.sqft).toLocaleString("en-US") + " sq ft"));
+      row.append(facts);
+      box.append(row, el("h4", null, it.address));
+      if (it.note) box.append(el("p", "say", it.note));
+      if (it.url) { const a = el("a", null, "see the listing ↗"); a.href = it.url; a.target = "_blank"; a.rel = "noopener"; box.append(a); }
+    } else {
+      box.append(el("h4", null, it.title), el("p", null, it.body));
+      if (it.url) {
+        const s = el("span", "src");
+        const a = el("a", null, (it.source || "source") + " ↗"); a.href = it.url; a.target = "_blank"; a.rel = "noopener";
+        s.append(document.createTextNode("via "), a); box.append(s);
+      }
+    }
+    body.append(box);
+  }
+}
+
+let lastFocus = null;
+function openSheet(key) {
+  openKey = key; lastFocus = document.activeElement;
+  renderSheet(key);
+  $("scrim").hidden = false; $("sheet").hidden = false; $("sheet").scrollTop = 0;
+  $("close").focus();
+}
+function closeSheet() {
+  openKey = null; $("scrim").hidden = true; $("sheet").hidden = true;
+  if (lastFocus) lastFocus.focus();
+}
+for (const k of ["houses", "tiktok", "coolkids"]) $("card-" + k).addEventListener("click", () => openSheet(k));
+$("close").addEventListener("click", closeSheet);
+$("scrim").addEventListener("click", closeSheet);
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && openKey) closeSheet(); });
+
+// Jewish holidays: date of the first full day. Each starts at sundown the evening before.
+const HOLIDAYS = [
+  ["2026-12-05","Hanukkah"],["2026-12-20","Asara B'Tevet"],["2027-01-23","Tu BiShvat"],["2027-03-22","Ta'anit Esther"],["2027-03-23","Purim"],
+  ["2027-04-22","Passover"],["2027-05-25","Lag BaOmer"],["2027-06-11","Shavuot"],["2027-07-22","17 of Tammuz"],["2027-08-12","Tisha B'Av"],
+  ["2027-08-18","Tu B'Av"],["2027-10-02","Rosh Hashanah"],["2027-10-04","Tzom Gedaliah"],["2027-10-11","Yom Kippur"],["2027-10-16","Sukkot"],
+  ["2027-10-23","Shemini Atzeret"],["2027-10-24","Simchat Torah"],["2027-12-25","Hanukkah"],["2028-01-09","Asara B'Tevet"],["2028-02-12","Tu BiShvat"],
+  ["2028-03-09","Ta'anit Esther"],["2028-03-12","Purim"],["2028-04-11","Passover"],["2028-05-14","Lag BaOmer"],["2028-05-31","Shavuot"],
+  ["2028-07-11","17 of Tammuz"],["2028-08-01","Tisha B'Av"],["2028-08-07","Tu B'Av"],["2028-09-21","Rosh Hashanah"],["2028-09-24","Tzom Gedaliah"],
+  ["2028-09-30","Yom Kippur"],["2028-10-05","Sukkot"],["2028-10-12","Shemini Atzeret"],["2028-10-13","Simchat Torah"],["2028-12-13","Hanukkah"],
+  ["2028-12-28","Asara B'Tevet"],["2029-01-31","Tu BiShvat"],["2029-02-28","Ta'anit Esther"],["2029-03-01","Purim"],["2029-03-31","Passover"],
+  ["2029-05-03","Lag BaOmer"],["2029-05-20","Shavuot"],["2029-07-01","17 of Tammuz"],["2029-07-22","Tisha B'Av"],["2029-07-27","Tu B'Av"],
+  ["2029-09-10","Rosh Hashanah"],["2029-09-12","Tzom Gedaliah"],["2029-09-19","Yom Kippur"],["2029-09-24","Sukkot"]
+];
+const utc = (s) => { const [y, m, d] = s.split("-").map(Number); return Date.UTC(y, m - 1, d); };
+const pretty = (ms) => new Date(ms).toLocaleDateString("en-US", { timeZone: "UTC", weekday: "short", month: "short", day: "numeric" });
+
+function countdown(todayStr) {
+  const today = utc(todayStr);
+  const upcoming = HOLIDAYS.map(([d, n]) => ({ name: n, erev: utc(d) - 864e5 })).filter(h => h.erev >= today);
+  return { today, upcoming };
+}
+function renderHoliday() {
+  const { today, upcoming } = countdown(nyParts(new Date()));
+  if (!upcoming.length) { $("h-days").textContent = "?"; $("h-name").textContent = "time to update the calendar"; return; }
+  const next = upcoming[0];
+  const days = Math.round((next.erev - today) / 864e5);
+  if (days === 0) { $("h-days").textContent = "0"; $("h-unit").textContent = "days. it's tonight!!"; }
+  else { $("h-days").textContent = days; $("h-unit").textContent = days === 1 ? "day until" : "days until"; }
+  $("h-name").textContent = next.name;
+  $("h-when").textContent = "starts at sundown " + pretty(next.erev).toLowerCase();
+  const later = upcoming.slice(1, 3).map(h => h.name + " (" + pretty(h.erev).replace(/^\w+, /, "").toLowerCase() + ")");
+  $("h-after").textContent = later.length ? "then: " + later.join(", ") : "";
+}
+
+$("today").textContent = new Date().toLocaleDateString("en-US", { timeZone: "America/New_York", weekday: "long", month: "long", day: "numeric" });
+renderTeasers();
+renderHoliday();
+
+// Fresh content: the 6am refresh rewrites feeds.json every morning.
+async function loadFeeds() {
+  try {
+    const r = await fetch("feeds.json?t=" + Date.now(), { cache: "no-store" });
+    if (!r.ok) return;
+    const data = await r.json();
+    for (const k of ["houses", "tiktok", "coolkids"]) {
+      const d = data[k];
+      if (!d || !Array.isArray(d.items) || !d.items.length) continue;
+      state[k] = { updatedAt: d.updatedAt, items: d.items };
+    }
+    renderTeasers();
+    if (openKey) renderSheet(openKey);
+  } catch (e) { /* snapshot stays */ }
+}
+loadFeeds();
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") { renderHoliday(); loadFeeds(); } });
+</script>
+
+</body>
+</html>
