@@ -11,12 +11,11 @@
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" href="icon-192.png">
-<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Daily: Emily / Jaimie</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: a bright desk of four candy-colored cards; three open into a bottom sheet feed, the holiday card is the countdown itself. Single committed bright look. */
+/* Layout: a bright desk of four candy-colored cards; each opens a bottom sheet. Single committed bright look. */
 :root {
   color-scheme: light;
   --bg: #fff6fa;
@@ -24,6 +23,7 @@
   --ink-soft: #6a5578;
   --pink: #ff8ac0;
   --pink-deep: #e2378a;
+  --rose: #f43f5e;
   --sun: #ffd84d;
   --tang: #ff9d5c;
   --mint: #7fe0c0;
@@ -33,10 +33,14 @@
   --font-display: "Bricolage Grotesque", "Arial Rounded MT Bold", system-ui, sans-serif;
   --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
   --r: 22px;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
+img { max-width: 100%; }
 body {
-  background: var(--bg);
+  margin: 0;
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 16px;
@@ -44,132 +48,142 @@ body {
   padding-left: max(16px, env(safe-area-inset-left, 0px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
   padding-block: 20px 40px;
+  background-color: var(--bg);
   background-image: radial-gradient(var(--pink) 1.4px, transparent 1.6px);
   background-size: 22px 22px;
-  background-color: var(--bg);
 }
 .wrap { max-width: 920px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
 
 header { display: flex; flex-direction: column; gap: 6px; padding-top: 8px; }
 .kicker { font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--pink-deep); }
-h1 {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(38px, 9vw, 72px);
-  line-height: .95;
-  letter-spacing: -.02em;
-  margin: 0;
-  text-wrap: balance;
-}
-h1 .slash { color: var(--pink-deep); display: inline-block; transform: rotate(8deg); margin: 0 .06em; }
+h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(38px, 9vw, 72px); line-height: .95; letter-spacing: -.02em; margin: 0; text-wrap: balance; }
+h1 .slash { color: var(--pink-deep); display: inline-block; transform: rotate(8deg); margin: 0 .06em; animation: wiggle 3.2s ease-in-out infinite; }
 h1 .n { background: var(--paper); border: 2.5px solid var(--line); border-radius: 14px; padding: 0 .14em; box-shadow: 4px 4px 0 var(--line); display: inline-block; }
 .nw { white-space: nowrap; }
 .sub { color: var(--ink-soft); font-weight: 500; }
+@keyframes wiggle { 0%, 100% { transform: rotate(8deg); } 50% { transform: rotate(-6deg) scale(1.08); } }
 
 .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
 
 .card {
-  position: relative;
-  border: 2.5px solid var(--line);
-  border-radius: var(--r);
-  box-shadow: 6px 6px 0 var(--line);
-  padding: 20px 20px 18px;
-  display: flex; flex-direction: column; gap: 12px;
-  text-align: left; font: inherit; color: var(--ink);
-  min-width: 0;
-  transition: transform .15s ease, box-shadow .15s ease;
+  position: relative; border: 2.5px solid var(--line); border-radius: var(--r); box-shadow: 6px 6px 0 var(--line);
+  padding: 20px 20px 18px; display: flex; flex-direction: column; gap: 12px; text-align: left; font: inherit; color: var(--ink);
+  min-width: 0; cursor: pointer; transition: transform .15s ease, box-shadow .15s ease;
+  animation: rise .5s cubic-bezier(.2, .9, .3, 1.3) both;
 }
-button.card { cursor: pointer; }
-button.card:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--line); }
-button.card:active { transform: translate(3px, 3px); box-shadow: 3px 3px 0 var(--line); }
-button.card:focus-visible { outline: 3px solid var(--sky); outline-offset: 4px; }
-.c-house { background: var(--pink); }
-.c-tok { background: var(--sun); }
-.c-kids { background: var(--mint); }
-.c-hol { background: var(--tang); }
-
-.card h2 {
-  font-family: var(--font-display); font-weight: 800;
-  font-size: clamp(24px, 4.4vw, 32px); line-height: 1.02; letter-spacing: -.01em;
-  margin: 0; text-wrap: balance;
-}
-.tag {
-  align-self: flex-start;
-  font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
-  background: var(--paper); border: 2px solid var(--line); border-radius: 12px; padding: 3px 10px;
-}
+.card:nth-child(2) { animation-delay: .06s; } .card:nth-child(3) { animation-delay: .12s; } .card:nth-child(4) { animation-delay: .18s; }
+@keyframes rise { from { transform: translateY(18px) rotate(-1deg); } to { transform: none; } }
+.card:hover { transform: translate(-2px, -2px) rotate(-.4deg); box-shadow: 8px 8px 0 var(--line); }
+.card:active { transform: translate(3px, 3px); box-shadow: 3px 3px 0 var(--line); }
+.card:focus-visible { outline: 3px solid var(--sky); outline-offset: 4px; }
+.c-house { background: var(--pink); } .c-tok { background: var(--sun); } .c-kids { background: var(--mint); } .c-hol { background: var(--tang); }
+.card h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(24px, 4.4vw, 32px); line-height: 1.02; letter-spacing: -.01em; margin: 0; text-wrap: balance; }
+.tag { align-self: flex-start; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; background: var(--paper); border: 2px solid var(--line); border-radius: 12px; padding: 3px 10px; }
 .teaser { background: var(--paper); border: 2px solid var(--line); border-radius: 14px; padding: 12px 14px; font-weight: 500; min-height: 3.2em; }
 .teaser b { font-family: var(--font-display); font-weight: 700; }
 .foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; flex-wrap: wrap; }
 .open { display: inline-flex; align-items: center; gap: 6px; background: var(--ink); color: var(--paper); border-radius: 999px; padding: 6px 14px; font-weight: 700; }
 
-/* Holiday card */
-.count { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
-.big {
-  font-family: var(--font-display); font-weight: 800;
-  font-size: clamp(76px, 18vw, 128px); line-height: .85; letter-spacing: -.04em;
-  font-variant-numeric: tabular-nums;
-}
-.unit { font-family: var(--font-display); font-weight: 700; font-size: 22px; }
-.holname { font-family: var(--font-display); font-weight: 800; font-size: 26px; line-height: 1.05; }
+/* Countdown ticker */
+.ticker { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.tick { background: var(--paper); border: 2.5px solid var(--line); border-radius: 14px; box-shadow: 3px 3px 0 var(--line); padding: 8px 4px 6px; text-align: center; min-width: 0; }
+.tick b { display: block; font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 7vw, 40px); line-height: 1; font-variant-numeric: tabular-nums; }
+.tick span { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.tick.pop b { animation: pop .35s ease; }
+@keyframes pop { 0% { transform: scale(1); } 40% { transform: scale(1.18); color: var(--pink-deep); } 100% { transform: scale(1); } }
+.holname { font-family: var(--font-display); font-weight: 800; font-size: 28px; line-height: 1.05; }
 .holwhen { font-weight: 600; }
-.after { font-size: 14px; color: var(--ink); background: rgba(255,255,255,.55); border-radius: 12px; padding: 8px 12px; }
 
 /* Sheet */
 .scrim { position: fixed; inset: 0; background: rgba(43, 18, 64, .45); z-index: 20; }
 .sheet {
-  position: fixed; left: 0; right: 0; bottom: 0; z-index: 21;
-  max-height: 88%; overflow-y: auto;
-  background: var(--bg);
-  border-top: 2.5px solid var(--line);
-  border-radius: 26px 26px 0 0;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-  padding-top: 0;
-  padding-bottom: calc(28px + env(safe-area-inset-bottom, 0px));
-  animation: up .28s cubic-bezier(.2, .9, .3, 1.2);
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 21; max-height: 90%; overflow-y: auto; background: var(--bg);
+  border-top: 2.5px solid var(--line); border-radius: 26px 26px 0 0;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-top: 0; padding-bottom: calc(28px + env(safe-area-inset-bottom, 0px));
+  animation: up .32s cubic-bezier(.2, .9, .3, 1.2);
 }
-@keyframes up { from { transform: translateY(40px); opacity: .6; } to { transform: none; opacity: 1; } }
-@media (prefers-reduced-motion: reduce) { .sheet { animation: none; } .card { transition: none; } }
+@keyframes up { from { transform: translateY(60px); } to { transform: none; } }
 .sheet-in { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
-.sheet-head {
-  position: sticky; top: 0; background: var(--bg); z-index: 1;
-  display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;
-  padding-block: 18px 10px;
-}
+.sheet-head { position: sticky; top: 0; background: var(--bg); z-index: 1; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding-block: 18px 10px; }
 .sheet-head h3 { font-family: var(--font-display); font-weight: 800; font-size: clamp(26px, 6vw, 36px); line-height: 1; margin: 0; text-wrap: balance; }
-.sheet-head .stamp { font-size: 13px; color: var(--ink-soft); font-weight: 600; margin-top: 6px; }
-.close {
-  flex: none; font: inherit; font-weight: 800; font-size: 20px; line-height: 1;
-  width: 42px; height: 42px; border-radius: 50%;
-  background: var(--paper); color: var(--ink); border: 2.5px solid var(--line); box-shadow: 3px 3px 0 var(--line); cursor: pointer;
-}
-.close:focus-visible { outline: 3px solid var(--sky); outline-offset: 3px; }
+.stamp { font-size: 13px; color: var(--ink-soft); font-weight: 600; margin-top: 6px; }
+.close { flex: none; font: inherit; font-weight: 800; font-size: 20px; line-height: 1; width: 42px; height: 42px; border-radius: 50%; background: var(--paper); color: var(--ink); border: 2.5px solid var(--line); box-shadow: 3px 3px 0 var(--line); cursor: pointer; }
+.close:focus-visible, .btn:focus-visible, .take-btn:focus-visible, .linkish:focus-visible, .vote:focus-visible { outline: 3px solid var(--sky); outline-offset: 3px; }
+#sheet-body { display: flex; flex-direction: column; gap: 16px; }
 
-.item {
-  background: var(--paper); border: 2.5px solid var(--line); border-radius: 18px; box-shadow: 4px 4px 0 var(--line);
-  padding: 16px 18px; display: flex; flex-direction: column; gap: 8px; min-width: 0;
-}
+.item { background: var(--paper); border: 2.5px solid var(--line); border-radius: 18px; box-shadow: 4px 4px 0 var(--line); padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0; animation: rise .45s cubic-bezier(.2, .9, .3, 1.3) both; }
 .item h4 { font-family: var(--font-display); font-weight: 800; font-size: 21px; line-height: 1.1; margin: 0; text-wrap: balance; }
 .item p { margin: 0; max-width: 62ch; }
-.item a { color: var(--pink-deep); font-weight: 700; text-underline-offset: 3px; }
-.item a:focus-visible { outline: 3px solid var(--sky); outline-offset: 2px; border-radius: 4px; }
+.item a.src-link { color: var(--pink-deep); font-weight: 700; text-underline-offset: 3px; }
 .price { font-family: var(--font-display); font-weight: 800; font-size: 30px; line-height: 1; font-variant-numeric: tabular-nums; }
 .facts { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip { font-size: 13px; font-weight: 700; border: 2px solid var(--line); border-radius: 999px; padding: 2px 10px; background: var(--bg); font-variant-numeric: tabular-nums; }
 .chip.town { background: var(--pink); }
 .say { font-style: italic; }
 .src { font-size: 13px; color: var(--ink-soft); }
+.houseRow { display: flex; justify-content: space-between; align-items: flex-end; gap: 10px; flex-wrap: wrap; }
+.archived { align-self: flex-start; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; background: var(--sun); border: 2px solid var(--line); border-radius: 999px; padding: 2px 10px; }
 .pic { color: var(--ink); text-decoration: none; display: block; position: relative; aspect-ratio: 16 / 10; max-width: 100%; border: 2.5px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--pink); }
-.pic img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pic img { position: relative; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+.pic:hover img { transform: scale(1.04); }
 .pic .ph { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; font-family: var(--font-display); font-weight: 800; font-size: 18px; background: repeating-linear-gradient(-45deg, var(--pink) 0 18px, #ff9fcb 18px 36px); }
 .pic .ph svg { width: 64px; height: 64px; }
-.houseRow { display: flex; justify-content: space-between; align-items: flex-end; gap: 10px; flex-wrap: wrap; }
 
+/* Jaimie's take */
+.take-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; padding-top: 4px; }
+.take-btn {
+  display: inline-flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer;
+  font-family: var(--font-display); font-weight: 800; font-size: 16px; color: var(--ink);
+  background: var(--sun); border: 2.5px solid var(--line); border-radius: 999px; padding: 9px 18px;
+  box-shadow: 4px 4px 0 var(--rose); transition: transform .12s ease, box-shadow .12s ease;
+}
+.take-btn:hover { transform: translate(-1px, -1px) rotate(-1deg); box-shadow: 6px 6px 0 var(--rose); }
+.take-btn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--rose); }
+.linkish { font: inherit; font-size: 14px; font-weight: 700; color: var(--ink-soft); background: none; border: 0; padding: 4px 2px; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.take {
+  position: relative; background: #ffe3ef; border: 2.5px solid var(--line); border-radius: 16px 16px 16px 4px; padding: 12px 14px;
+  box-shadow: 3px 3px 0 var(--rose); animation: rise .4s cubic-bezier(.2, .9, .3, 1.4) both;
+}
+.take .who { font-family: var(--font-display); font-weight: 800; font-size: 14px; letter-spacing: .02em; color: var(--pink-deep); }
+.take p { white-space: pre-wrap; }
+
+/* Holiday sheet */
+.hol-hero { background: var(--tang); border: 2.5px solid var(--line); border-radius: 18px; box-shadow: 4px 4px 0 var(--line); padding: 16px 18px; display: flex; flex-direction: column; gap: 12px; }
+.blk { background: var(--paper); border: 2.5px solid var(--line); border-radius: 18px; box-shadow: 4px 4px 0 var(--line); padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; animation: rise .45s cubic-bezier(.2, .9, .3, 1.3) both; }
+.blk h4 { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: 20px; }
+.blk ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; }
+.versus { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 10px; align-items: center; }
+.vs { font-family: var(--font-display); font-weight: 800; font-size: 18px; }
+.vote { font: inherit; font-family: var(--font-display); font-weight: 800; font-size: 17px; line-height: 1.1; color: var(--ink); background: var(--bg); border: 2.5px solid var(--line); border-radius: 16px; padding: 14px 10px; cursor: pointer; box-shadow: 3px 3px 0 var(--line); transition: transform .12s ease, background .2s ease; min-width: 0; }
+.vote[aria-pressed="true"] { background: var(--sun); transform: rotate(-2deg) scale(1.03); box-shadow: 4px 4px 0 var(--rose); }
+.vote-note { font-size: 14px; font-weight: 600; color: var(--ink-soft); min-height: 1.4em; }
+.bubble { background: #ffe3ef; border: 2.5px solid var(--line); border-radius: 16px 16px 4px 16px; padding: 12px 14px; font-weight: 500; }
+.next-list { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* Take modal */
+.modal-scrim { position: fixed; inset: 0; background: rgba(43, 18, 64, .55); z-index: 40; display: flex; align-items: center; justify-content: center; padding: 16px; }
+.modal { width: min(520px, 100%); background: var(--bg); border: 2.5px solid var(--line); border-radius: 22px; box-shadow: 6px 6px 0 var(--rose); padding: 20px; display: flex; flex-direction: column; gap: 12px; animation: rise .3s cubic-bezier(.2, .9, .3, 1.3) both; }
+.modal h3 { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: 24px; line-height: 1.05; }
+.modal label { font-weight: 700; font-size: 14px; }
+.modal textarea { font: inherit; width: 100%; min-height: 140px; padding: 12px; border: 2.5px solid var(--line); border-radius: 14px; background: var(--paper); color: var(--ink); resize: vertical; }
+.modal textarea:focus-visible { outline: 3px solid var(--sky); outline-offset: 2px; }
+.modal .row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; align-items: center; }
+.modal .hint { font-size: 13px; color: var(--ink-soft); margin: 0; }
+.btn { font: inherit; font-weight: 800; cursor: pointer; border: 2.5px solid var(--line); border-radius: 999px; padding: 9px 18px; background: var(--paper); color: var(--ink); box-shadow: 3px 3px 0 var(--line); }
+.btn.primary { background: var(--pink); box-shadow: 3px 3px 0 var(--rose); }
+.btn.danger { margin-right: auto; background: none; box-shadow: none; border-color: transparent; text-decoration: underline; color: var(--ink-soft); padding-inline: 4px; }
+
+#confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 60; }
 .sig { text-align: center; font-family: var(--font-display); font-weight: 700; color: var(--ink-soft); font-size: 15px; }
-</style>
 
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
 <div class="wrap">
   <header>
     <span class="kicker" id="today">today</span>
@@ -199,13 +213,17 @@ button.card:focus-visible { outline: 3px solid var(--sky); outline-offset: 4px; 
       <div class="foot"><span id="s-coolkids"></span><span class="open">open ↗</span></div>
     </button>
 
-    <section class="card c-hol" aria-label="Days until the next Jewish holiday">
+    <button class="card c-hol" id="card-holiday" type="button" aria-haspopup="dialog">
       <span class="tag">when's the next jewish holiday</span>
-      <div class="count"><span class="big" id="h-days">–</span><span class="unit" id="h-unit">days until</span></div>
+      <div class="ticker" aria-live="off">
+        <div class="tick"><b id="cd-d">–</b><span>days</span></div>
+        <div class="tick"><b id="cd-h">–</b><span>hrs</span></div>
+        <div class="tick"><b id="cd-m">–</b><span>min</span></div>
+        <div class="tick" id="tick-s"><b id="cd-s">–</b><span>sec</span></div>
+      </div>
       <div class="holname" id="h-name"></div>
-      <div class="holwhen" id="h-when"></div>
-      <div class="after" id="h-after"></div>
-    </section>
+      <div class="foot"><span class="holwhen" id="h-when"></span><span class="open">the menu ↗</span></div>
+    </button>
   </main>
 
   <p class="sig">xo, jaimie</p>
@@ -218,191 +236,371 @@ button.card:focus-visible { outline: 3px solid var(--sky); outline-offset: 4px; 
       <div><h3 id="sheet-title"></h3><div class="stamp" id="sheet-stamp"></div></div>
       <button class="close" id="close" type="button" aria-label="Close">×</button>
     </div>
-    <div id="sheet-body" style="display:flex;flex-direction:column;gap:14px"></div>
+    <div id="sheet-body"></div>
   </div>
 </div>
 
-<script>
-// Snapshot shown until (or if) the shared feed loads. The daily refresh writes newer data to the store.
-const SNAPSHOT = {
-  houses: {"updatedAt": "2026-10-28T22:00:00-04:00", "items": [{"address": "2 Hollow Ridge Rd", "town": "Armonk", "price": 5400000, "beds": 7, "baths": 8.5, "sqft": 11000, "note": "ok the KITCHEN. double-height barrel-vaulted ceiling, a fireplace next to the breakfast table, AND a wine cellar with a tasting room downstairs. 2.3 acres. i can't.", "url": "https://www.realtor.com/realestateandhomes-detail/2-Hollow-Ridge-Rd_Armonk_NY_10504_M32327-56418"}, {"address": "49 Beechmont Ave", "town": "Bronxville", "price": 2600000, "beds": 5, "baths": 3.5, "sqft": 3059, "note": "bronxville!! five bedrooms, would look SO good with a wreath on the door.", "url": "https://www.redfin.com/NY/Yonkers/49-Beechmont-Ave-10708/home/20160962", "photo": "https://ssl.cdn-redfin.com/photo/269/islphoto/856/genIslnoResize.1061856_0.webp"}, {"address": "11 Fraydun Ln", "town": "Scarsdale", "price": 2495000, "beds": 5, "baths": 5.5, "sqft": 4020, "note": "5.5 bathrooms for 5 bedrooms. nobody in this house is ever waiting for a shower.", "url": "https://www.redfin.com/NY/Scarsdale/11-Fraydun-Ln-10583/home/52269832", "photo": "https://ssl.cdn-redfin.com/photo/269/bigphoto/760/1060760_0.jpg"}, {"address": "10 Warnke Ln", "town": "Scarsdale", "price": 2300000, "beds": 4, "baths": 5.5, "sqft": 3675, "note": "more bathrooms than bedrooms AGAIN. scarsdale has a thing and i respect it.", "url": "https://www.redfin.com/NY/Scarsdale/10-Warnke-Ln-10583/home/20122826", "photo": "https://ssl.cdn-redfin.com/photo/269/islphoto/086/genIslnoResize.1063086_0.webp"}, {"address": "103 Walworth Ave", "town": "Scarsdale", "price": 1968000, "beds": 6, "baths": 3.5, "sqft": 2780, "note": "SIX bedrooms in scarsdale for under 2?? someone tell me the catch.", "url": "https://www.redfin.com/NY/Scarsdale/103-Walworth-Ave-10583/home/20061836", "photo": "https://ssl.cdn-redfin.com/photo/269/islphoto/707/genIslnoResize.1065707_0.webp"}, {"address": "130 Siwanoy Blvd", "town": "Eastchester", "price": 1875000, "beds": 4, "baths": 2.5, "sqft": 2500, "note": "eastchester, 4 bed, just listed. putting it on your radar.", "url": "https://www.redfin.com/NY/Eastchester/130-Siwanoy-Blvd-10709/home/20143855", "photo": "https://ssl.cdn-redfin.com/photo/269/islphoto/845/genIslnoResize.1063845_0.webp"}]},
-  tiktok: { updatedAt: "2026-10-28T21:30:00-04:00", items: [
-    { title: "\"Two Fishes\" is everywhere", body: "it's a deadpan clip of Corbin from Love Island USA season 8 (people literally call him CorbinGPT) and everyone is lip-syncing it to defend the most unhinged opinions with total confidence. the worse the take, the better it does.", url: "https://newengen.com/insights/tiktok-trends/", source: "NewEngen" },
-    { title: "everyone is doing the Kylie hip pop", body: "people are recreating Kylie Jenner's runway moment, the little hip pop and the slightly nervous turn, set to JADE's \"Angel of My Dreams.\" glam but awkward. it's working on literally any outfit.", url: "https://newengen.com/insights/tiktok-trends/", source: "NewEngen" },
-    { title: "\"stop the wedding, but…\" confessions", body: "photo carousels that open with \"stop the wedding, but…\" and then reveal a wedding regret or a weirdly specific memory. people are being SO honest. very good scroll.", url: "https://newengen.com/insights/tiktok-trends/", source: "NewEngen" },
-    { title: "the halloween costume of the year is not close", body: "KPop Demon Hunters. Rumi, Mira and Zoey costumes are officially licensed now and they are all over the costume reveals. expect a lot of them at your door friday.", url: "https://www.glendalehalloween.com/viral-halloween-costume-trends-2026/", source: "Glendale Halloween" }
-  ]},
-  coolkids: { updatedAt: "2026-10-28T21:30:00-04:00", items: [
-    { title: "gen alpha's obsession is a minecraft horror movie", body: "it's called \"Verity\" (NOT the colleen hoover one). it's an hour-long minecraft horror video by a youtuber called ThatMob, and the scary thing is a yellow smiley face that's basically an AI assistant. very on the nose.", url: "https://www.ypulse.com/article/2026/10/02/gen-alphas-new-brainrot-obsession-on-the-viral-list/", source: "YPulse" },
-    { title: "13–15 year olds are weirdly optimistic about dating", body: "Match Group surveyed young teens: only 20% have been in a relationship (gen z was 56% at that age), 64% think you should be friends first, and 84% think their future is bright. cute?? honestly cute.", url: "https://www.fastcompany.com/91626157/gen-alpha-has-a-surprisingly-optimistic-outlook-on-dating", source: "Fast Company" },
-    { title: "everything is \"-maxxing\" now", body: "looksmaxxing, sleepmaxxing, personalitymaxxing. it just means optimizing something to the max. looksmaxxing officially made it into Merriam-Webster, and \"lowkenuinely\" is one of the favorites for their word of the year.", url: "https://www.dictionary.com/e/slang/maxxing/", source: "Dictionary.com" },
-    { title: "gen z is letting AI do the shopping", body: "80% of gen z used AI to buy something in the last three months. but 45% also say online recommendations limit what they're \"allowed\" to like. so they use it and resent it. relatable.", url: "https://www.retaildive.com/news/gen-z-gen-alpha-holiday-shopping-retail-trends/831838/", source: "Retail Dive" }
-  ]}
-};
+<div class="modal-scrim" id="take-modal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="take-title">
+    <h3 id="take-title">Jaimie's take</h3>
+    <p class="hint" id="take-about"></p>
+    <label for="take-text">Paste or type her verdict</label>
+    <textarea id="take-text" placeholder="omg yes. buy it."></textarea>
+    <p class="hint">It saves on this phone and stays on this card, even after the feed refreshes.</p>
+    <div class="row">
+      <button class="btn danger" id="take-remove" type="button">Remove take</button>
+      <button class="btn" id="take-cancel" type="button">Cancel</button>
+      <button class="btn primary" id="take-save" type="button">Save take</button>
+    </div>
+  </div>
+</div>
 
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<script>
+const EMAIL = "jjmeyers914@gmail.com";
 const TITLES = { houses: "Wait, I need to show you this house", tiktok: "omg have you seen what's happening on TikTok??", coolkids: "What are the cool kids doing?" };
-const state = JSON.parse(JSON.stringify(SNAPSHOT));
+const state = { houses: { items: [] }, tiktok: { items: [] }, coolkids: { items: [] } };
 let openKey = null;
 
 const $ = (id) => document.getElementById(id);
 const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
-const money = (n) => n >= 1e6 ? "$" + (n / 1e6).toFixed(n % 1e6 === 0 ? 0 : (n % 1e5 === 0 ? 1 : 2)).replace(/\.?0+$/, "") + "M" : "$" + Math.round(n / 1e3) + "K";
+const money = (n) => n >= 1e6 ? "$" + (n / 1e6).toFixed(2).replace(/\.?0+$/, "") + "M" : "$" + Math.round(n / 1e3) + "K";
+const moneyFull = (n) => "$" + Number(n).toLocaleString("en-US");
+const reduced = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-function nyParts(d) {
-  const f = new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", year: "numeric", month: "2-digit", day: "2-digit" });
-  const p = Object.fromEntries(f.formatToParts(d).map(x => [x.type, x.value]));
+/* ---------- storage (per phone) ---------- */
+function load(key, fallback) { try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; } catch (e) { return fallback; } }
+function save(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); return true; } catch (e) { return false; } }
+let takes = load("dej-takes", {});
+let votes = load("dej-votes", {});
+
+/* ---------- dates ---------- */
+function nyDay(d) {
+  const p = Object.fromEntries(new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", year: "numeric", month: "2-digit", day: "2-digit" }).formatToParts(d).map(x => [x.type, x.value]));
   return p.year + "-" + p.month + "-" + p.day;
 }
 function stamp(iso) {
   if (!iso) return "";
-  const d = new Date(iso);
-  if (isNaN(d)) return "";
-  const today = nyParts(new Date()), that = nyParts(d);
-  const y = new Date(Date.now() - 864e5);
-  const when = that === today ? "today" : that === nyParts(y) ? "yesterday" :
-    d.toLocaleDateString("en-US", { timeZone: "America/New_York", weekday: "short", month: "short", day: "numeric" }).toLowerCase();
+  const d = new Date(iso); if (isNaN(d)) return "";
+  const today = nyDay(new Date()), that = nyDay(d), yday = nyDay(new Date(Date.now() - 864e5));
+  const when = that === today ? "today" : that === yday ? "yesterday" : d.toLocaleDateString("en-US", { timeZone: "America/New_York", weekday: "short", month: "short", day: "numeric" }).toLowerCase();
   const t = d.toLocaleTimeString("en-US", { timeZone: "America/New_York", hour: "numeric", minute: "2-digit" }).toLowerCase().replace(":00", "");
   return "fresh " + when + ", " + t;
 }
 
+/* ---------- confetti ---------- */
+const cv = $("confetti"), ctx = cv.getContext("2d");
+let bits = [], raf = null;
+const COLORS = ["#ff8ac0", "#ffd84d", "#7fe0c0", "#ff9d5c", "#8ec5ff", "#f43f5e", "#2b1240"];
+function confetti(x, y, n) {
+  if (reduced) return;
+  const dpr = window.devicePixelRatio || 1;
+  cv.width = innerWidth * dpr; cv.height = innerHeight * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  for (let i = 0; i < (n || 70); i++) {
+    const a = Math.random() * Math.PI * 2, s = 4 + Math.random() * 8;
+    bits.push({ x, y, vx: Math.cos(a) * s, vy: Math.sin(a) * s - 6, r: 4 + Math.random() * 5, c: COLORS[i % COLORS.length], rot: Math.random() * 6, vr: (Math.random() - .5) * .4, life: 70 + Math.random() * 40, shape: i % 3 });
+  }
+  if (!raf) raf = requestAnimationFrame(step);
+}
+function step() {
+  ctx.clearRect(0, 0, innerWidth, innerHeight);
+  bits = bits.filter(b => b.life > 0);
+  for (const b of bits) {
+    b.vy += .32; b.vx *= .985; b.x += b.vx; b.y += b.vy; b.rot += b.vr; b.life--;
+    ctx.save(); ctx.translate(b.x, b.y); ctx.rotate(b.rot); ctx.globalAlpha = Math.min(1, b.life / 25); ctx.fillStyle = b.c;
+    if (b.shape === 0) ctx.fillRect(-b.r, -b.r / 2, b.r * 2, b.r);
+    else if (b.shape === 1) { ctx.beginPath(); ctx.arc(0, 0, b.r / 1.5, 0, Math.PI * 2); ctx.fill(); }
+    else { ctx.beginPath(); ctx.moveTo(0, -b.r); ctx.lineTo(b.r, b.r); ctx.lineTo(-b.r, b.r); ctx.closePath(); ctx.fill(); }
+    ctx.restore();
+  }
+  raf = bits.length ? requestAnimationFrame(step) : (ctx.clearRect(0, 0, innerWidth, innerHeight), null);
+}
+function burstFrom(elm, n) { const r = elm.getBoundingClientRect(); confetti(r.left + r.width / 2, r.top + Math.min(r.height / 2, 80), n); }
+
+/* ---------- Jaimie's take ---------- */
+function itemId(section, it) { return section + "|" + (it.url || "") + "|" + (it.address || it.title || ""); }
+function mailto(section, it) {
+  let subject, lines;
+  if (section === "houses") {
+    subject = "Daily Emily / Jaimie: Need your take on " + it.address + " in " + it.town + "!";
+    lines = ["ok i need your take on this house:", "", it.address + ", " + it.town, "price: " + moneyFull(it.price),
+      [it.beds && it.beds + " bed", it.baths && it.baths + " bath", it.sqft && Number(it.sqft).toLocaleString("en-US") + " sq ft"].filter(Boolean).join(" / ")];
+    if (it.taxes) lines.push("est. taxes: " + it.taxes);
+    if (it.commute) lines.push("commute: " + it.commute);
+    if (it.url) lines.push("listing: " + it.url);
+    lines.push("", "your take:", "");
+  } else if (section === "tiktok") {
+    subject = "Daily Emily / Jaimie: Need your take on " + it.title.replace(/"/g, "") + "!";
+    lines = ["omg have you seen this??", "", "the topic: " + it.title];
+    if (it.creator) lines.push("creator: " + it.creator);
+    if (it.views) lines.push("views: " + it.views);
+    lines.push("the drama: " + it.body);
+    if (it.url) lines.push("source: " + it.url);
+    lines.push("", "your take:", "");
+  } else {
+    subject = "Daily Emily / Jaimie: Legit or total brainrot? " + it.title.replace(/"/g, "");
+    lines = ["need your verdict on this one:", "", "the trend: " + it.title, "what it is: " + it.body];
+    if (it.url) lines.push("source: " + it.url);
+    lines.push("", "legit or total brainrot?", "");
+  }
+  return "mailto:" + EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(lines.join("\n"));
+}
+function takeBlock(section, it) {
+  const box = el("div");
+  box.style.display = "flex"; box.style.flexDirection = "column"; box.style.gap = "10px";
+  const id = itemId(section, it), t = takes[id];
+  if (t && t.text) {
+    const b = el("div", "take"); b.append(el("div", "who", "jaimie's take:"), el("p", null, t.text)); box.append(b);
+  }
+  const row = el("div", "take-row");
+  const a = el("a", "take-btn", section === "houses" ? "Get Jaimie's Take on this house" : "Get Jaimie's Take");
+  a.href = mailto(section, it);
+  a.addEventListener("click", () => burstFrom(a, 40));
+  const paste = el("button", "linkish", t && t.text ? "edit her take" : "she replied? add her take");
+  paste.type = "button";
+  paste.addEventListener("click", () => openTake(section, it));
+  row.append(a, paste); box.append(row);
+  return box;
+}
+let takeCtx = null;
+function openTake(section, it) {
+  takeCtx = { section, it, id: itemId(section, it) };
+  $("take-about").textContent = section === "houses" ? it.address + ", " + it.town : it.title;
+  $("take-text").value = (takes[takeCtx.id] && takes[takeCtx.id].text) || "";
+  $("take-remove").hidden = !takes[takeCtx.id];
+  $("take-modal").hidden = false; $("take-text").focus();
+}
+function closeTake() { $("take-modal").hidden = true; takeCtx = null; }
+$("take-cancel").addEventListener("click", closeTake);
+$("take-modal").addEventListener("click", (e) => { if (e.target === $("take-modal")) closeTake(); });
+$("take-save").addEventListener("click", (e) => {
+  if (!takeCtx) return;
+  const text = $("take-text").value.trim();
+  if (!text) { $("take-text").focus(); return; }
+  takes[takeCtx.id] = { text, section: takeCtx.section, item: takeCtx.it, savedAt: new Date().toISOString() };
+  save("dej-takes", takes);
+  const r = e.target.getBoundingClientRect(); confetti(r.left + r.width / 2, r.top, 90);
+  closeTake(); if (openKey) renderSheet(openKey);
+});
+$("take-remove").addEventListener("click", () => {
+  if (!takeCtx) return; delete takes[takeCtx.id]; save("dej-takes", takes); closeTake(); if (openKey) renderSheet(openKey);
+});
+
+/* ---------- feeds ---------- */
+function itemsFor(key) {
+  const live = (state[key].items || []).map(it => ({ it, archived: false }));
+  const ids = new Set(live.map(x => itemId(key, x.it)));
+  const kept = Object.entries(takes).filter(([id, t]) => t.section === key && !ids.has(id) && t.item).map(([, t]) => ({ it: t.item, archived: true }));
+  return live.concat(kept);
+}
 function renderTeasers() {
   const h = state.houses.items || [];
   const tH = $("t-houses"); tH.textContent = "";
-  if (h.length) {
-    const top = h.reduce((a, b) => (b.price > a.price ? b : a));
-    tH.append(el("b", null, h.length + " new ones"), document.createTextNode(", including a " + money(top.price) + " situation in " + top.town + "."));
-  } else tH.textContent = "No new listings yet today. Check back in the morning.";
+  if (h.length) { const top = h.reduce((a, b) => (b.price > a.price ? b : a)); tH.append(el("b", null, h.length + " new ones"), document.createTextNode(", including a " + money(top.price) + " situation in " + top.town + ".")); }
+  else tH.textContent = "New listings land every weekday morning.";
   for (const k of ["tiktok", "coolkids"]) {
-    const t = $("t-" + k); t.textContent = "";
-    const first = (state[k].items || [])[0];
+    const t = $("t-" + k); t.textContent = ""; const first = (state[k].items || [])[0];
     if (first) t.append(el("b", null, first.title), document.createTextNode(" + " + Math.max(0, state[k].items.length - 1) + " more"));
-    else t.textContent = "Nothing new yet today. Check back in the morning.";
+    else t.textContent = "Fresh ones land every weekday morning.";
   }
   for (const k of ["houses", "tiktok", "coolkids"]) $("s-" + k).textContent = stamp(state[k].updatedAt);
 }
-
-function renderSheet(key) {
-  const body = $("sheet-body"); body.textContent = "";
-  $("sheet-title").textContent = TITLES[key];
-  $("sheet-stamp").textContent = stamp(state[key].updatedAt);
-  const items = state[key].items || [];
-  if (!items.length) { body.append(el("p", "src", "Nothing here yet. The feed refreshes every morning.")); return; }
-  for (const it of items) {
-    const box = el("article", "item");
-    if (key === "houses") {
-      box.append(housePic(it));
-      const row = el("div", "houseRow");
-      row.append(el("span", "price", money(it.price)));
-      const facts = el("div", "facts");
-      facts.append(el("span", "chip town", it.town));
-      if (it.beds) facts.append(el("span", "chip", it.beds + " bd"));
-      if (it.baths) facts.append(el("span", "chip", it.baths + " ba"));
-      if (it.sqft) facts.append(el("span", "chip", Number(it.sqft).toLocaleString("en-US") + " sq ft"));
-      row.append(facts);
-      box.append(row, el("h4", null, it.address));
-      if (it.note) box.append(el("p", "say", it.note));
-      if (it.url) { const a = el("a", null, "see the listing ↗"); a.href = it.url; a.target = "_blank"; a.rel = "noopener"; box.append(a); }
-    } else {
-      box.append(el("h4", null, it.title), el("p", null, it.body));
-      if (it.url) {
-        const s = el("span", "src");
-        const a = el("a", null, (it.source || "source") + " ↗"); a.href = it.url; a.target = "_blank"; a.rel = "noopener";
-        s.append(document.createTextNode("via "), a); box.append(s);
-      }
-    }
-    body.append(box);
-  }
-}
-
 const HOUSE_SVG = '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 30 32 10l24 20" fill="none" stroke="#2b1240" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><path d="M15 27v27h34V27" fill="#fff" stroke="#2b1240" stroke-width="5" stroke-linejoin="round"/><rect x="27" y="38" width="10" height="16" fill="#ffd84d" stroke="#2b1240" stroke-width="4"/></svg>';
 function housePic(it) {
   const wrap = el("a", "pic");
   if (it.url) { wrap.href = it.url; wrap.target = "_blank"; wrap.rel = "noopener"; }
   wrap.setAttribute("aria-label", "Photos of " + it.address);
-  const ph = el("div", "ph"); ph.innerHTML = HOUSE_SVG; ph.append(el("span", null, "tap for photos"));
-  wrap.append(ph);
+  const ph = el("div", "ph"); ph.innerHTML = HOUSE_SVG; ph.append(el("span", null, "tap for photos")); wrap.append(ph);
   if (it.photo) {
     const img = document.createElement("img");
     img.src = it.photo; img.alt = it.address + ", " + it.town; img.loading = "lazy"; img.referrerPolicy = "no-referrer";
-    img.onerror = () => img.remove();
-    img.style.position = "relative";
-    wrap.append(img);
+    img.onerror = () => img.remove(); wrap.append(img);
   }
   return wrap;
 }
+function renderSheet(key) {
+  const body = $("sheet-body"); body.textContent = "";
+  if (key === "holiday") return renderHolidaySheet();
+  $("sheet-title").textContent = TITLES[key];
+  $("sheet-stamp").textContent = stamp(state[key].updatedAt);
+  const list = itemsFor(key);
+  if (!list.length) { body.append(el("p", "src", "Nothing here yet. New ones land every weekday morning.")); return; }
+  list.forEach(({ it, archived }, i) => {
+    const box = el("article", "item"); box.style.animationDelay = (i * 0.05) + "s";
+    if (archived) box.append(el("span", "archived", "saved with her take"));
+    if (key === "houses") {
+      box.append(housePic(it));
+      const row = el("div", "houseRow"); row.append(el("span", "price", money(it.price)));
+      const facts = el("div", "facts"); facts.append(el("span", "chip town", it.town));
+      if (it.beds) facts.append(el("span", "chip", it.beds + " bd"));
+      if (it.baths) facts.append(el("span", "chip", it.baths + " ba"));
+      if (it.sqft) facts.append(el("span", "chip", Number(it.sqft).toLocaleString("en-US") + " sq ft"));
+      row.append(facts); box.append(row, el("h4", null, it.address));
+      if (it.note) box.append(el("p", "say", it.note));
+      if (it.taxes || it.commute) box.append(el("p", "src", [it.taxes && "est. taxes " + it.taxes, it.commute && it.commute].filter(Boolean).join(" · ")));
+      if (it.url) { const a = el("a", "src-link", "see the listing ↗"); a.href = it.url; a.target = "_blank"; a.rel = "noopener"; box.append(a); }
+    } else {
+      box.append(el("h4", null, it.title));
+      const meta = [it.creator, it.views && it.views + " views"].filter(Boolean).join(" · ");
+      if (meta) box.append(el("span", "src", meta));
+      box.append(el("p", null, it.body));
+      if (it.url) { const s = el("span", "src"); const a = el("a", "src-link", (it.source || "source") + " ↗"); a.href = it.url; a.target = "_blank"; a.rel = "noopener"; s.append(document.createTextNode("via "), a); box.append(s); }
+    }
+    box.append(takeBlock(key, it));
+    body.append(box);
+  });
+}
 
+/* ---------- holidays ---------- */
+const HOLIDAYS = [
+  ["2026-12-05","hanukkah"],["2027-01-23","tubishvat"],["2027-03-23","purim"],["2027-04-22","passover"],["2027-06-11","shavuot"],
+  ["2027-10-02","roshhashanah"],["2027-10-11","yomkippur"],["2027-10-16","sukkot"],["2027-12-25","hanukkah"],["2028-02-12","tubishvat"],
+  ["2028-03-12","purim"],["2028-04-11","passover"],["2028-05-31","shavuot"],["2028-09-21","roshhashanah"],["2028-09-30","yomkippur"],
+  ["2028-10-05","sukkot"],["2028-12-13","hanukkah"],["2029-01-31","tubishvat"],["2029-03-01","purim"],["2029-03-31","passover"],
+  ["2029-05-20","shavuot"],["2029-09-10","roshhashanah"],["2029-09-19","yomkippur"],["2029-09-24","sukkot"]
+];
+const HOL = {
+  hanukkah: { name: "Hanukkah", foods: ["latkes, fried until the edges shatter", "sufganiyot (jelly donuts)", "chocolate gelt", "brisket if your family goes big"],
+    debate: ["applesauce", "sour cream"], customs: ["light the menorah, one more candle each night for eight nights", "spin the dreidel (nun, gimel, hey, shin)", "put the menorah in the window", "presents. how many nights, that's between you and your family"],
+    banter: "ok real question for our 1:1: are we doing all eight nights of gifts or are we a 'one big gift' household now" },
+  tubishvat: { name: "Tu BiShvat", foods: ["dried fruit, all of it", "almonds", "dates, figs, pomegranates (the seven species)", "carob, if you're brave"],
+    debate: ["dried apricots", "medjool dates"], customs: ["the new year for trees", "plant a tree, or donate one", "a little Tu BiShvat seder with four cups of wine"],
+    banter: "it's literally the birthday of trees. we should expense a fruit platter, i'm just saying" },
+  purim: { name: "Purim", foods: ["hamantaschen", "kreplach", "mishloach manot gift baskets", "wine (it's practically required)"],
+    debate: ["poppy seed hamantaschen", "apricot hamantaschen"], customs: ["read the megillah and drown out Haman with groggers", "costumes for everyone, adults included", "send food gifts to friends", "give to people in need"],
+    banter: "costume check: what are the kids going as. i need photos" },
+  passover: { name: "Passover", foods: ["matzo ball soup", "brisket", "charoset", "macaroons from the can, don't lie"],
+    debate: ["floaters", "sinkers"], customs: ["the seder, with the four questions", "hide the afikoman, pay the kid who finds it", "no bread for eight days", "Elijah's cup and opening the door"],
+    banter: "whose seder runs longer, yours or mine. be honest about how long you get before someone says 'can we eat'" },
+  shavuot: { name: "Shavuot", foods: ["cheesecake", "blintzes", "kugel", "basically anything dairy"],
+    debate: ["cheesecake", "blintzes"], customs: ["stay up all night studying Torah", "decorate with flowers and greenery", "read the book of Ruth"],
+    banter: "it's the dairy holiday. this is the one holiday where cheesecake for breakfast is a religious obligation" },
+  roshhashanah: { name: "Rosh Hashanah", foods: ["apples and honey", "round challah", "honey cake", "pomegranate"],
+    debate: ["raisins in the challah", "no raisins, ever"], customs: ["hear the shofar", "tashlich: toss bread crumbs into running water", "wish everyone a sweet new year (shana tova!)"],
+    banter: "new year, new us. what's one thing we're leaving in last year" },
+  yomkippur: { name: "Yom Kippur", foods: ["it's a fast day, so: nothing", "then the break-fast: bagels and lox", "whitefish salad", "kugel and coffee cake"],
+    debate: ["scallion cream cheese", "plain cream cheese"], customs: ["fast from sundown to sundown", "Kol Nidre the night before", "wear white, skip the leather shoes", "the shofar at the very end"],
+    banter: "i need your break-fast plate order. bagel, schmear, toppings. specifics only" },
+  sukkot: { name: "Sukkot", foods: ["stuffed cabbage", "stuffed peppers", "harvest anything", "eat it all outside in the sukkah"],
+    debate: ["sweet & sour stuffed cabbage", "savory stuffed cabbage"], customs: ["build a sukkah and eat (or sleep) in it", "shake the lulav and etrog", "invite guests over, the more the better"],
+    banter: "is anyone in westchester building a sukkah with an outdoor heater. asking for a reason" }
+};
+const LAT = 40.7128, LNG = -74.006;
+function sunsetUTC(y, m, d) {
+  const rad = Math.PI / 180, deg = 180 / Math.PI;
+  const N = Math.round((Date.UTC(y, m - 1, d) - Date.UTC(y, 0, 0)) / 864e5);
+  const lngHour = LNG / 15, t = N + (18 - lngHour) / 24, M = 0.9856 * t - 3.289;
+  let L = M + 1.916 * Math.sin(M * rad) + 0.020 * Math.sin(2 * M * rad) + 282.634; L = ((L % 360) + 360) % 360;
+  let RA = deg * Math.atan(0.91764 * Math.tan(L * rad)); RA = ((RA % 360) + 360) % 360;
+  RA = (RA + (Math.floor(L / 90) * 90 - Math.floor(RA / 90) * 90)) / 15;
+  const sinDec = 0.39782 * Math.sin(L * rad), cosDec = Math.cos(Math.asin(sinDec));
+  const cosH = (Math.cos(90.833 * rad) - sinDec * Math.sin(LAT * rad)) / (cosDec * Math.cos(LAT * rad));
+  const H = deg * Math.acos(cosH) / 15, T = H + RA - 0.06571 * t - 6.622;
+  let UT = (((T - lngHour) % 24) + 24) % 24; if (UT < 12) UT += 24;
+  return Date.UTC(y, m - 1, d) + UT * 3600e3;
+}
+function upcoming() {
+  const now = Date.now();
+  return HOLIDAYS.map(([d, key]) => {
+    const [y, m, dd] = d.split("-").map(Number); const erev = new Date(Date.UTC(y, m - 1, dd) - 864e5);
+    return { key, at: sunsetUTC(erev.getUTCFullYear(), erev.getUTCMonth() + 1, erev.getUTCDate()) };
+  }).filter(h => h.at > now);
+}
+const fmtStart = (ms) => new Date(ms).toLocaleString("en-US", { timeZone: "America/New_York", weekday: "short", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }).toLowerCase();
+let lastSec = null;
+function tick() {
+  const up = upcoming();
+  if (!up.length) { $("h-name").textContent = "time to update the calendar"; return; }
+  const next = up[0], diff = Math.max(0, next.at - Date.now());
+  const d = Math.floor(diff / 864e5), h = Math.floor(diff / 36e5) % 24, m = Math.floor(diff / 6e4) % 60, s = Math.floor(diff / 1e3) % 60;
+  $("cd-d").textContent = d; $("cd-h").textContent = String(h).padStart(2, "0"); $("cd-m").textContent = String(m).padStart(2, "0"); $("cd-s").textContent = String(s).padStart(2, "0");
+  if (s !== lastSec && !reduced) { const t = $("tick-s"); t.classList.remove("pop"); void t.offsetWidth; t.classList.add("pop"); lastSec = s; }
+  $("h-name").textContent = HOL[next.key].name;
+  $("h-when").textContent = "starts at sundown, " + fmtStart(next.at);
+}
+function renderHolidaySheet() {
+  const up = upcoming(); const body = $("sheet-body");
+  if (!up.length) return;
+  const next = up[0], H = HOL[next.key];
+  $("sheet-title").textContent = H.name;
+  $("sheet-stamp").textContent = "starts at sundown, " + fmtStart(next.at);
+
+  const hero = el("div", "hol-hero");
+  const tk = document.querySelector(".ticker").cloneNode(true);
+  tk.querySelectorAll("[id]").forEach(n => n.id = "sh-" + n.id);
+  hero.append(tk, el("span", "holwhen", "sundown in new york city"));
+  body.append(hero);
+
+  const food = el("section", "blk"); food.append(el("h4", null, "on the table"));
+  const ul = el("ul"); H.foods.forEach(f => ul.append(el("li", null, f))); food.append(ul); body.append(food);
+
+  const deb = el("section", "blk"); deb.append(el("h4", null, "the great debate"));
+  const vs = el("div", "versus"); const note = el("div", "vote-note");
+  const pick = votes[next.key];
+  const mk = (label) => {
+    const b = el("button", "vote", label); b.type = "button"; b.setAttribute("aria-pressed", String(pick === label));
+    b.addEventListener("click", () => {
+      votes[next.key] = label; save("dej-votes", votes);
+      vs.querySelectorAll(".vote").forEach(v => v.setAttribute("aria-pressed", String(v === b)));
+      note.textContent = "team " + label + ". correct answer, obviously.";
+      burstFrom(b, 60);
+    });
+    return b;
+  };
+  vs.append(mk(H.debate[0]), el("span", "vs", "vs"), mk(H.debate[1]));
+  if (pick) note.textContent = "team " + pick + ". correct answer, obviously.";
+  deb.append(vs, note); body.append(deb);
+
+  const cus = el("section", "blk"); cus.append(el("h4", null, "customs"));
+  const cl = el("ul"); H.customs.forEach(c => cl.append(el("li", null, c))); cus.append(cl); body.append(cus);
+
+  const ban = el("section", "blk"); ban.append(el("h4", null, "for our 1:1"), el("div", "bubble", H.banter)); body.append(ban);
+
+  const later = up.slice(1, 5);
+  if (later.length) {
+    const nx = el("section", "blk"); nx.append(el("h4", null, "after that"));
+    const list = el("div", "next-list");
+    later.forEach(h => list.append(el("span", "chip", HOL[h.key].name + " · " + new Date(h.at).toLocaleDateString("en-US", { timeZone: "America/New_York", month: "short", day: "numeric" }).toLowerCase())));
+    nx.append(list); body.append(nx);
+  }
+  const sync = () => { if (openKey !== "holiday") return; ["d", "h", "m", "s"].forEach(k => { const a = $("cd-" + k), b = $("sh-cd-" + k); if (a && b) b.textContent = a.textContent; }); };
+  sync(); clearInterval(window.__shSync); window.__shSync = setInterval(sync, 1000);
+}
+
+/* ---------- sheet open/close ---------- */
 let lastFocus = null;
-function openSheet(key) {
+function openSheet(key, from) {
   openKey = key; lastFocus = document.activeElement;
   renderSheet(key);
   $("scrim").hidden = false; $("sheet").hidden = false; $("sheet").scrollTop = 0;
+  if (from) burstFrom(from, 80);
   $("close").focus();
 }
-function closeSheet() {
-  openKey = null; $("scrim").hidden = true; $("sheet").hidden = true;
-  if (lastFocus) lastFocus.focus();
-}
-for (const k of ["houses", "tiktok", "coolkids"]) $("card-" + k).addEventListener("click", () => openSheet(k));
+function closeSheet() { openKey = null; clearInterval(window.__shSync); $("scrim").hidden = true; $("sheet").hidden = true; if (lastFocus) lastFocus.focus(); }
+for (const k of ["houses", "tiktok", "coolkids"]) $("card-" + k).addEventListener("click", (e) => openSheet(k, e.currentTarget));
+$("card-holiday").addEventListener("click", (e) => openSheet("holiday", e.currentTarget));
 $("close").addEventListener("click", closeSheet);
 $("scrim").addEventListener("click", closeSheet);
-document.addEventListener("keydown", (e) => { if (e.key === "Escape" && openKey) closeSheet(); });
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "Escape") return;
+  if (!$("take-modal").hidden) closeTake(); else if (openKey) closeSheet();
+});
 
-// Jewish holidays: date of the first full day. Each starts at sundown the evening before.
-const HOLIDAYS = [
-  ["2026-12-05","Hanukkah"],["2026-12-20","Asara B'Tevet"],["2027-01-23","Tu BiShvat"],["2027-03-22","Ta'anit Esther"],["2027-03-23","Purim"],
-  ["2027-04-22","Passover"],["2027-05-25","Lag BaOmer"],["2027-06-11","Shavuot"],["2027-07-22","17 of Tammuz"],["2027-08-12","Tisha B'Av"],
-  ["2027-08-18","Tu B'Av"],["2027-10-02","Rosh Hashanah"],["2027-10-04","Tzom Gedaliah"],["2027-10-11","Yom Kippur"],["2027-10-16","Sukkot"],
-  ["2027-10-23","Shemini Atzeret"],["2027-10-24","Simchat Torah"],["2027-12-25","Hanukkah"],["2028-01-09","Asara B'Tevet"],["2028-02-12","Tu BiShvat"],
-  ["2028-03-09","Ta'anit Esther"],["2028-03-12","Purim"],["2028-04-11","Passover"],["2028-05-14","Lag BaOmer"],["2028-05-31","Shavuot"],
-  ["2028-07-11","17 of Tammuz"],["2028-08-01","Tisha B'Av"],["2028-08-07","Tu B'Av"],["2028-09-21","Rosh Hashanah"],["2028-09-24","Tzom Gedaliah"],
-  ["2028-09-30","Yom Kippur"],["2028-10-05","Sukkot"],["2028-10-12","Shemini Atzeret"],["2028-10-13","Simchat Torah"],["2028-12-13","Hanukkah"],
-  ["2028-12-28","Asara B'Tevet"],["2029-01-31","Tu BiShvat"],["2029-02-28","Ta'anit Esther"],["2029-03-01","Purim"],["2029-03-31","Passover"],
-  ["2029-05-03","Lag BaOmer"],["2029-05-20","Shavuot"],["2029-07-01","17 of Tammuz"],["2029-07-22","Tisha B'Av"],["2029-07-27","Tu B'Av"],
-  ["2029-09-10","Rosh Hashanah"],["2029-09-12","Tzom Gedaliah"],["2029-09-19","Yom Kippur"],["2029-09-24","Sukkot"]
-];
-const utc = (s) => { const [y, m, d] = s.split("-").map(Number); return Date.UTC(y, m - 1, d); };
-const pretty = (ms) => new Date(ms).toLocaleDateString("en-US", { timeZone: "UTC", weekday: "short", month: "short", day: "numeric" });
-
-function countdown(todayStr) {
-  const today = utc(todayStr);
-  const upcoming = HOLIDAYS.map(([d, n]) => ({ name: n, erev: utc(d) - 864e5 })).filter(h => h.erev >= today);
-  return { today, upcoming };
-}
-function renderHoliday() {
-  const { today, upcoming } = countdown(nyParts(new Date()));
-  if (!upcoming.length) { $("h-days").textContent = "?"; $("h-name").textContent = "time to update the calendar"; return; }
-  const next = upcoming[0];
-  const days = Math.round((next.erev - today) / 864e5);
-  if (days === 0) { $("h-days").textContent = "0"; $("h-unit").textContent = "days. it's tonight!!"; }
-  else { $("h-days").textContent = days; $("h-unit").textContent = days === 1 ? "day until" : "days until"; }
-  $("h-name").textContent = next.name;
-  $("h-when").textContent = "starts at sundown " + pretty(next.erev).toLowerCase();
-  const later = upcoming.slice(1, 3).map(h => h.name + " (" + pretty(h.erev).replace(/^\w+, /, "").toLowerCase() + ")");
-  $("h-after").textContent = later.length ? "then: " + later.join(", ") : "";
-}
-
+/* ---------- boot ---------- */
 $("today").textContent = new Date().toLocaleDateString("en-US", { timeZone: "America/New_York", weekday: "long", month: "long", day: "numeric" });
-renderTeasers();
-renderHoliday();
-
-// Fresh content: the 6am refresh rewrites feeds.json every morning.
 async function loadFeeds() {
   try {
     const r = await fetch("feeds.json?t=" + Date.now(), { cache: "no-store" });
-    if (!r.ok) return;
+    if (!r.ok) throw new Error(r.status);
     const data = await r.json();
-    for (const k of ["houses", "tiktok", "coolkids"]) {
-      const d = data[k];
-      if (!d || !Array.isArray(d.items) || !d.items.length) continue;
-      state[k] = { updatedAt: d.updatedAt, items: d.items };
-    }
-    renderTeasers();
-    if (openKey) renderSheet(openKey);
-  } catch (e) { /* snapshot stays */ }
+    for (const k of ["houses", "tiktok", "coolkids"]) if (data[k] && Array.isArray(data[k].items)) state[k] = { updatedAt: data[k].updatedAt, items: data[k].items };
+  } catch (e) { /* keep what we have */ }
+  renderTeasers();
+  if (openKey && openKey !== "holiday") renderSheet(openKey);
 }
-loadFeeds();
-document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") { renderHoliday(); loadFeeds(); } });
+renderTeasers(); tick(); setInterval(tick, 1000); loadFeeds();
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") loadFeeds(); });
 </script>
-
 </body>
 </html>
