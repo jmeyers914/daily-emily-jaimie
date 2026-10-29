@@ -1,6 +1,6 @@
 {
  "houses": {
-  "updatedAt": "2026-10-28T22:00:00-04:00",
+  "updatedAt": "2026-10-29T06:55:00-04:00",
   "items": [
    {
     "address": "2 Hollow Ridge Rd",
@@ -35,6 +35,18 @@
     "photo": "https://ssl.cdn-redfin.com/photo/269/bigphoto/760/1060760_0.jpg"
    },
    {
+    "address": "19 Maple St",
+    "town": "Scarsdale",
+    "price": 1500000,
+    "beds": 4,
+    "baths": 2.5,
+    "sqft": 3396,
+    "taxes": "$27,189/yr",
+    "note": "just hit the market this month. 3,400 sq ft in scarsdale for 1.5, honestly kind of a deal for there??",
+    "url": "https://www.redfin.com/NY/Scarsdale/19-Maple-St-10583/home/20147241",
+    "photo": "https://ssl.cdn-redfin.com/photo/269/islphoto/733/genIslnoResize.1054733_0.webp"
+   },
+   {
     "address": "10 Warnke Ln",
     "town": "Scarsdale",
     "price": 2300000,
@@ -44,17 +56,6 @@
     "note": "more bathrooms than bedrooms AGAIN. scarsdale has a thing and i respect it.",
     "url": "https://www.redfin.com/NY/Scarsdale/10-Warnke-Ln-10583/home/20122826",
     "photo": "https://ssl.cdn-redfin.com/photo/269/islphoto/086/genIslnoResize.1063086_0.webp"
-   },
-   {
-    "address": "103 Walworth Ave",
-    "town": "Scarsdale",
-    "price": 1968000,
-    "beds": 6,
-    "baths": 3.5,
-    "sqft": 2780,
-    "note": "SIX bedrooms in scarsdale for under 2?? someone tell me the catch.",
-    "url": "https://www.redfin.com/NY/Scarsdale/103-Walworth-Ave-10583/home/20061836",
-    "photo": "https://ssl.cdn-redfin.com/photo/269/islphoto/707/genIslnoResize.1065707_0.webp"
    },
    {
     "address": "130 Siwanoy Blvd",
@@ -70,60 +71,66 @@
   ]
  },
  "tiktok": {
-  "updatedAt": "2026-10-28T21:30:00-04:00",
+  "updatedAt": "2026-10-29T06:55:00-04:00",
   "items": [
    {
-    "title": "\"Two Fishes\" is everywhere",
-    "body": "it's a deadpan clip of Corbin from Love Island USA season 8 (people literally call him CorbinGPT) and everyone is lip-syncing it to defend the most unhinged opinions with total confidence. the worse the take, the better it does.",
-    "url": "https://newengen.com/insights/tiktok-trends/",
-    "source": "NewEngen"
+    "title": "the \"Pray For Me\" slow-mo run",
+    "creator": "@kemanirae_",
+    "views": "10.3M",
+    "body": "friends run into frame one at a time in super dramatic slow motion to a slowed-down sound. the top one is at 10.3M views. it's giving action movie in a parking lot and i'm obsessed.",
+    "url": "https://postdom.com/blog/tiktok-trends",
+    "source": "Postdom"
    },
    {
-    "title": "everyone is doing the Kylie hip pop",
-    "body": "people are recreating Kylie Jenner's runway moment, the little hip pop and the slightly nervous turn, set to JADE's \"Angel of My Dreams.\" glam but awkward. it's working on literally any outfit.",
-    "url": "https://newengen.com/insights/tiktok-trends/",
-    "source": "NewEngen"
+    "title": "\"what iPad?\"",
+    "creator": "@bibacosmeticsolutions",
+    "body": "people swear on camera they do NOT own an iPad while one is very obviously hiding somewhere in the shot, and the comments turn into a where's waldo. so dumb, so good.",
+    "url": "https://postdom.com/blog/tiktok-trends",
+    "source": "Postdom"
    },
    {
-    "title": "\"stop the wedding, but\u2026\" confessions",
-    "body": "photo carousels that open with \"stop the wedding, but\u2026\" and then reveal a wedding regret or a weirdly specific memory. people are being SO honest. very good scroll.",
-    "url": "https://newengen.com/insights/tiktok-trends/",
-    "source": "NewEngen"
+    "title": "ghost photoshoots at the office",
+    "creator": "@nudestix",
+    "body": "teams are throwing white sheets over their heads, adding sunglasses, and doing a whole retro ghost photoshoot at work. we should have done this for halloween!!",
+    "url": "https://postdom.com/blog/tiktok-trends",
+    "source": "Postdom"
    },
    {
-    "title": "the halloween costume of the year is not close",
-    "body": "KPop Demon Hunters. Rumi, Mira and Zoey costumes are officially licensed now and they are all over the costume reveals. expect a lot of them at your door friday.",
-    "url": "https://www.glendalehalloween.com/viral-halloween-costume-trends-2026/",
-    "source": "Glendale Halloween"
+    "title": "everyone's doing the \"Dip On Em\" dance",
+    "creator": "@joff_000",
+    "views": "292K",
+    "body": "a quick one-take dance to SouthMemphisHypeman's \"Dip On Em,\" usually two coworkers on a break. the sound's video count more than doubled in a few weeks.",
+    "url": "https://www.socialpilot.co/blog/tiktok-trends",
+    "source": "SocialPilot"
    }
   ]
  },
  "coolkids": {
-  "updatedAt": "2026-10-28T21:30:00-04:00",
+  "updatedAt": "2026-10-29T06:55:00-04:00",
   "items": [
    {
-    "title": "gen alpha's obsession is a minecraft horror movie",
-    "body": "it's called \"Verity\" (NOT the colleen hoover one). it's an hour-long minecraft horror video by a youtuber called ThatMob, and the scary thing is a yellow smiley face that's basically an AI assistant. very on the nose.",
-    "url": "https://www.ypulse.com/article/2026/10/02/gen-alphas-new-brainrot-obsession-on-the-viral-list/",
-    "source": "YPulse"
+    "title": "\"6-7\" (and now \"41\")",
+    "body": "6-7 is a meaningless sing-songy answer to literally any question, with a little two-handed weighing motion. 41 is the new nonsense number they pair with it. there is no meaning. that's the point.",
+    "url": "https://gabb.com/blog/teen-slang/",
+    "source": "Gabb"
    },
    {
-    "title": "13\u201315 year olds are weirdly optimistic about dating",
-    "body": "Match Group surveyed young teens: only 20% have been in a relationship (gen z was 56% at that age), 64% think you should be friends first, and 84% think their future is bright. cute?? honestly cute.",
-    "url": "https://www.fastcompany.com/91626157/gen-alpha-has-a-surprisingly-optimistic-outlook-on-dating",
-    "source": "Fast Company"
+    "title": "\"glazing\"",
+    "body": "means hyping someone up SO much it gets embarrassing. like if i told you your deck was the best deck ever made in the history of decks. (it was though.)",
+    "url": "https://gabb.com/blog/teen-slang/",
+    "source": "Gabb"
    },
    {
-    "title": "everything is \"-maxxing\" now",
-    "body": "looksmaxxing, sleepmaxxing, personalitymaxxing. it just means optimizing something to the max. looksmaxxing officially made it into Merriam-Webster, and \"lowkenuinely\" is one of the favorites for their word of the year.",
-    "url": "https://www.dictionary.com/e/slang/maxxing/",
-    "source": "Dictionary.com"
+    "title": "\"aura\"",
+    "body": "basically your cool factor. walking in calm and unbothered = big aura. tripping on the stairs = minus aura. kids keep score.",
+    "url": "https://gabb.com/blog/teen-slang/",
+    "source": "Gabb"
    },
    {
-    "title": "gen z is letting AI do the shopping",
-    "body": "80% of gen z used AI to buy something in the last three months. but 45% also say online recommendations limit what they're \"allowed\" to like. so they use it and resent it. relatable.",
-    "url": "https://www.retaildive.com/news/gen-z-gen-alpha-holiday-shopping-retail-trends/831838/",
-    "source": "Retail Dive"
+    "title": "\"standing on business\"",
+    "body": "means doing what you said you'd do, no excuses. very much a 1:1 follow-up energy, honestly.",
+    "url": "https://gabb.com/blog/teen-slang/",
+    "source": "Gabb"
    }
   ]
  }
