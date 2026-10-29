@@ -50,7 +50,15 @@ body {
 }
 .wrap { max-width: 920px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
 
-header { display: flex; flex-direction: column; gap: 6px; padding-top: 8px; }
+header { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 330px); align-items: center; gap: 16px; padding-top: 8px; }
+.htext { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.us { position: relative; justify-self: end; width: 100%; }
+.us::before { content: ""; position: absolute; inset: 8% 6% 0 10%; background: var(--sun); border: 2.5px solid var(--line); border-radius: 50%; }
+.us img { position: relative; display: block; width: 100%; height: auto; transform: rotate(-3deg); filter: drop-shadow(4px 5px 0 rgba(43, 18, 64, .9)); }
+@media (max-width: 600px) {
+  header { grid-template-columns: 1fr; }
+  .us { order: -1; justify-self: start; width: min(280px, 78%); }
+}
 .kicker { font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--pink-deep); }
 h1 {
   font-family: var(--font-display);
@@ -63,6 +71,7 @@ h1 {
 }
 h1 .slash { color: var(--pink-deep); display: inline-block; transform: rotate(8deg); margin: 0 .06em; }
 h1 .n { background: var(--paper); border: 2.5px solid var(--line); border-radius: 14px; padding: 0 .14em; box-shadow: 4px 4px 0 var(--line); display: inline-block; }
+.nw { white-space: nowrap; }
 .sub { color: var(--ink-soft); font-weight: 500; }
 
 .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
@@ -96,7 +105,7 @@ button.card:focus-visible { outline: 3px solid var(--sky); outline-offset: 4px; 
 .tag {
   align-self: flex-start;
   font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
-  background: var(--paper); border: 2px solid var(--line); border-radius: 999px; padding: 3px 10px;
+  background: var(--paper); border: 2px solid var(--line); border-radius: 12px; padding: 3px 10px;
 }
 .teaser { background: var(--paper); border: 2px solid var(--line); border-radius: 14px; padding: 12px 14px; font-weight: 500; min-height: 3.2em; }
 .teaser b { font-family: var(--font-display); font-weight: 700; }
@@ -167,9 +176,12 @@ button.card:focus-visible { outline: 3px solid var(--sky); outline-offset: 4px; 
 
 <div class="wrap">
   <header>
-    <span class="kicker" id="today">today</span>
-    <h1><span class="n">Daily:</span> Emily<span class="slash">/</span>Jaimie</h1>
-    <span class="sub">our 1:1 without our 1:1</span>
+    <div class="htext">
+      <span class="kicker" id="today">today</span>
+      <h1><span class="n">Daily:</span> <span class="nw">Emily<span class="slash">/</span>Jaimie</span></h1>
+      <span class="sub">our 1:1 without our 1:1</span>
+    </div>
+    <div class="us"><img src="us.webp" alt="Emily and Jaimie" width="720" height="516"></div>
   </header>
 
   <main class="grid">
