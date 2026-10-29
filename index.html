@@ -50,14 +50,7 @@ body {
 }
 .wrap { max-width: 920px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
 
-header { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 340px); align-items: center; gap: 16px; padding-top: 8px; }
-.htext { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
-.us { position: relative; justify-self: end; width: 100%; }
-.us img { display: block; width: 100%; height: auto; transform: rotate(-2deg); }
-@media (max-width: 600px) {
-  header { grid-template-columns: 1fr; }
-  .us { order: -1; justify-self: start; width: min(300px, 82%); }
-}
+header { display: flex; flex-direction: column; gap: 6px; padding-top: 8px; }
 .kicker { font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--pink-deep); }
 h1 {
   font-family: var(--font-display);
@@ -168,6 +161,10 @@ button.card:focus-visible { outline: 3px solid var(--sky); outline-offset: 4px; 
 .chip.town { background: var(--pink); }
 .say { font-style: italic; }
 .src { font-size: 13px; color: var(--ink-soft); }
+.pic { color: var(--ink); text-decoration: none; display: block; position: relative; aspect-ratio: 16 / 10; max-width: 100%; border: 2.5px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--pink); }
+.pic img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pic .ph { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; font-family: var(--font-display); font-weight: 800; font-size: 18px; background: repeating-linear-gradient(-45deg, var(--pink) 0 18px, #ff9fcb 18px 36px); }
+.pic .ph svg { width: 64px; height: 64px; }
 .houseRow { display: flex; justify-content: space-between; align-items: flex-end; gap: 10px; flex-wrap: wrap; }
 
 .sig { text-align: center; font-family: var(--font-display); font-weight: 700; color: var(--ink-soft); font-size: 15px; }
@@ -175,12 +172,9 @@ button.card:focus-visible { outline: 3px solid var(--sky); outline-offset: 4px; 
 
 <div class="wrap">
   <header>
-    <div class="htext">
-      <span class="kicker" id="today">today</span>
-      <h1><span class="n">Daily:</span> <span class="nw">Emily<span class="slash">/</span>Jaimie</span></h1>
-      <span class="sub">our 1:1 without our 1:1</span>
-    </div>
-    <div class="us"><img src="us.webp" alt="Emily and Jaimie" width="720" height="540"></div>
+    <span class="kicker" id="today">today</span>
+    <h1><span class="n">Daily:</span> <span class="nw">Emily<span class="slash">/</span>Jaimie</span></h1>
+    <span class="sub">our 1:1 without our 1:1</span>
   </header>
 
   <main class="grid">
@@ -231,13 +225,7 @@ button.card:focus-visible { outline: 3px solid var(--sky); outline-offset: 4px; 
 <script>
 // Snapshot shown until (or if) the shared feed loads. The daily refresh writes newer data to the store.
 const SNAPSHOT = {
-  houses: { updatedAt: "2026-10-28T21:30:00-04:00", items: [
-    { address: "2 Hollow Ridge Rd", town: "Armonk", price: 5400000, beds: 7, baths: 8.5, sqft: 11000, note: "ok the KITCHEN. double-height barrel-vaulted ceiling, a fireplace next to the breakfast table, AND a wine cellar with a tasting room downstairs. 2.3 acres. i can't.", url: "https://www.realtor.com/realestateandhomes-detail/2-Hollow-Ridge-Rd_Armonk_NY_10504_M32327-56418" },
-    { address: "24 Cayuga Rd", town: "Scarsdale", price: 4950000, beds: 6, baths: 5, sqft: 5812, note: "the biggest thing on the scarsdale new-listings page rn. six bedrooms. just putting it in front of you.", url: "https://www.redfin.com/NY/Scarsdale/24-Cayuga-Rd-10583/home/20017169" },
-    { address: "49 Beechmont Ave", town: "Bronxville", price: 2600000, beds: 5, baths: 3.5, sqft: 3059, note: "bronxville!! five bedrooms, would look SO good with a wreath on the door.", url: "https://www.redfin.com/NY/Yonkers/49-Beechmont-Ave-10708/home/20160962" },
-    { address: "11 Fraydun Ln", town: "Scarsdale", price: 2495000, beds: 5, baths: 5.5, sqft: 4020, note: "5.5 bathrooms for 5 bedrooms. nobody in this house is ever waiting for a shower.", url: "https://www.redfin.com/NY/Scarsdale/11-Fraydun-Ln-10583/home/52269832" },
-    { address: "10 Warnke Ln", town: "Scarsdale", price: 2300000, beds: 4, baths: 5.5, sqft: 3675, note: "more bathrooms than bedrooms AGAIN. scarsdale has a thing and i respect it.", url: "https://www.redfin.com/NY/Scarsdale/10-Warnke-Ln-10583/home/20122826" }
-  ]},
+  houses: {"updatedAt": "2026-10-28T22:00:00-04:00", "items": [{"address": "2 Hollow Ridge Rd", "town": "Armonk", "price": 5400000, "beds": 7, "baths": 8.5, "sqft": 11000, "note": "ok the KITCHEN. double-height barrel-vaulted ceiling, a fireplace next to the breakfast table, AND a wine cellar with a tasting room downstairs. 2.3 acres. i can't.", "url": "https://www.realtor.com/realestateandhomes-detail/2-Hollow-Ridge-Rd_Armonk_NY_10504_M32327-56418"}, {"address": "49 Beechmont Ave", "town": "Bronxville", "price": 2600000, "beds": 5, "baths": 3.5, "sqft": 3059, "note": "bronxville!! five bedrooms, would look SO good with a wreath on the door.", "url": "https://www.redfin.com/NY/Yonkers/49-Beechmont-Ave-10708/home/20160962", "photo": "https://ssl.cdn-redfin.com/photo/269/islphoto/856/genIslnoResize.1061856_0.webp"}, {"address": "11 Fraydun Ln", "town": "Scarsdale", "price": 2495000, "beds": 5, "baths": 5.5, "sqft": 4020, "note": "5.5 bathrooms for 5 bedrooms. nobody in this house is ever waiting for a shower.", "url": "https://www.redfin.com/NY/Scarsdale/11-Fraydun-Ln-10583/home/52269832", "photo": "https://ssl.cdn-redfin.com/photo/269/bigphoto/760/1060760_0.jpg"}, {"address": "10 Warnke Ln", "town": "Scarsdale", "price": 2300000, "beds": 4, "baths": 5.5, "sqft": 3675, "note": "more bathrooms than bedrooms AGAIN. scarsdale has a thing and i respect it.", "url": "https://www.redfin.com/NY/Scarsdale/10-Warnke-Ln-10583/home/20122826", "photo": "https://ssl.cdn-redfin.com/photo/269/islphoto/086/genIslnoResize.1063086_0.webp"}, {"address": "103 Walworth Ave", "town": "Scarsdale", "price": 1968000, "beds": 6, "baths": 3.5, "sqft": 2780, "note": "SIX bedrooms in scarsdale for under 2?? someone tell me the catch.", "url": "https://www.redfin.com/NY/Scarsdale/103-Walworth-Ave-10583/home/20061836", "photo": "https://ssl.cdn-redfin.com/photo/269/islphoto/707/genIslnoResize.1065707_0.webp"}, {"address": "130 Siwanoy Blvd", "town": "Eastchester", "price": 1875000, "beds": 4, "baths": 2.5, "sqft": 2500, "note": "eastchester, 4 bed, just listed. putting it on your radar.", "url": "https://www.redfin.com/NY/Eastchester/130-Siwanoy-Blvd-10709/home/20143855", "photo": "https://ssl.cdn-redfin.com/photo/269/islphoto/845/genIslnoResize.1063845_0.webp"}]},
   tiktok: { updatedAt: "2026-10-28T21:30:00-04:00", items: [
     { title: "\"Two Fishes\" is everywhere", body: "it's a deadpan clip of Corbin from Love Island USA season 8 (people literally call him CorbinGPT) and everyone is lip-syncing it to defend the most unhinged opinions with total confidence. the worse the take, the better it does.", url: "https://newengen.com/insights/tiktok-trends/", source: "NewEngen" },
     { title: "everyone is doing the Kylie hip pop", body: "people are recreating Kylie Jenner's runway moment, the little hip pop and the slightly nervous turn, set to JADE's \"Angel of My Dreams.\" glam but awkward. it's working on literally any outfit.", url: "https://newengen.com/insights/tiktok-trends/", source: "NewEngen" },
@@ -302,6 +290,7 @@ function renderSheet(key) {
   for (const it of items) {
     const box = el("article", "item");
     if (key === "houses") {
+      box.append(housePic(it));
       const row = el("div", "houseRow");
       row.append(el("span", "price", money(it.price)));
       const facts = el("div", "facts");
@@ -323,6 +312,23 @@ function renderSheet(key) {
     }
     body.append(box);
   }
+}
+
+const HOUSE_SVG = '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 30 32 10l24 20" fill="none" stroke="#2b1240" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><path d="M15 27v27h34V27" fill="#fff" stroke="#2b1240" stroke-width="5" stroke-linejoin="round"/><rect x="27" y="38" width="10" height="16" fill="#ffd84d" stroke="#2b1240" stroke-width="4"/></svg>';
+function housePic(it) {
+  const wrap = el("a", "pic");
+  if (it.url) { wrap.href = it.url; wrap.target = "_blank"; wrap.rel = "noopener"; }
+  wrap.setAttribute("aria-label", "Photos of " + it.address);
+  const ph = el("div", "ph"); ph.innerHTML = HOUSE_SVG; ph.append(el("span", null, "tap for photos"));
+  wrap.append(ph);
+  if (it.photo) {
+    const img = document.createElement("img");
+    img.src = it.photo; img.alt = it.address + ", " + it.town; img.loading = "lazy"; img.referrerPolicy = "no-referrer";
+    img.onerror = () => img.remove();
+    img.style.position = "relative";
+    wrap.append(img);
+  }
+  return wrap;
 }
 
 let lastFocus = null;
