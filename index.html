@@ -441,7 +441,12 @@ function housePic(it) {
   if (it.photo) {
     const img = document.createElement("img");
     img.src = it.photo; img.alt = it.address + ", " + it.town; img.loading = "lazy"; img.referrerPolicy = "no-referrer";
-    img.onerror = () => img.remove(); wrap.append(img);
+    img.onerror = () => {
+      img.remove();
+      const card = wrap.closest(".item");
+      if (card && card.parentNode) card.parentNode.append(card); // broken photo: send to the back
+    };
+    wrap.append(img);
   }
   return wrap;
 }
@@ -451,6 +456,7 @@ function renderSheet(key) {
   $("sheet-title").textContent = TITLES[key];
   $("sheet-stamp").textContent = stamp(state[key].updatedAt);
   const list = itemsFor(key);
+  if (key === "houses") list.sort((a, b) => (a.archived - b.archived) || ((b.it.photo ? 1 : 0) - (a.it.photo ? 1 : 0)));
   if (!list.length) { body.append(el("p", "src", "Nothing here yet. New ones land every weekday morning.")); return; }
   list.forEach(({ it, archived }, i) => {
     const box = el("article", "item"); box.style.animationDelay = (i * 0.05) + "s";
