@@ -1,6 +1,6 @@
 {
  "houses": {
-  "updatedAt": "2026-10-29T06:55:00-04:00",
+  "updatedAt": "2026-10-30T06:20:00-04:00",
   "items": [
    {
     "address": "2 Hollow Ridge Rd",
@@ -11,6 +11,17 @@
     "sqft": 11000,
     "note": "ok the KITCHEN. double-height barrel-vaulted ceiling, a fireplace next to the breakfast table, AND a wine cellar with a tasting room downstairs. 2.3 acres. i can't.",
     "url": "https://www.realtor.com/realestateandhomes-detail/2-Hollow-Ridge-Rd_Armonk_NY_10504_M32327-56418"
+   },
+   {
+    "address": "22 Normandy Ter",
+    "town": "Bronxville",
+    "price": 1950000,
+    "beds": 4,
+    "baths": 2.5,
+    "sqft": 1800,
+    "note": "a 1928 bronxville house with a stone wall and a whole perennial garden out front. it's giving storybook!!",
+    "url": "https://www.redfin.com/NY/Bronxville/22-Normandy-Ter-10708/home/113879408",
+    "photo": "https://ssl.cdn-redfin.com/photo/269/islphoto/087/genIslnoResize.1059087_0.webp"
    },
    {
     "address": "49 Beechmont Ave",
@@ -56,81 +67,66 @@
     "note": "more bathrooms than bedrooms AGAIN. scarsdale has a thing and i respect it.",
     "url": "https://www.redfin.com/NY/Scarsdale/10-Warnke-Ln-10583/home/20122826",
     "photo": "https://ssl.cdn-redfin.com/photo/269/islphoto/086/genIslnoResize.1063086_0.webp"
-   },
-   {
-    "address": "130 Siwanoy Blvd",
-    "town": "Eastchester",
-    "price": 1875000,
-    "beds": 4,
-    "baths": 2.5,
-    "sqft": 2500,
-    "note": "eastchester, 4 bed, just listed. putting it on your radar.",
-    "url": "https://www.redfin.com/NY/Eastchester/130-Siwanoy-Blvd-10709/home/20143855",
-    "photo": "https://ssl.cdn-redfin.com/photo/269/islphoto/845/genIslnoResize.1063845_0.webp"
    }
   ]
  },
  "tiktok": {
-  "updatedAt": "2026-10-29T06:55:00-04:00",
+  "updatedAt": "2026-10-30T06:20:00-04:00",
   "items": [
    {
-    "title": "the \"Pray For Me\" slow-mo run",
-    "creator": "@kemanirae_",
-    "views": "10.3M",
-    "body": "friends run into frame one at a time in super dramatic slow motion to a slowed-down sound. the top one is at 10.3M views. it's giving action movie in a parking lot and i'm obsessed.",
-    "url": "https://postdom.com/blog/tiktok-trends",
-    "source": "Postdom"
+    "title": "\"Calling All the Monsters\" is back",
+    "creator": "China Anne McClain",
+    "views": "805K+ videos",
+    "body": "the old disney channel halloween song has 805K+ videos on tiktok rn. everyone born after like 1998 is losing it.",
+    "url": "https://inmusicblog.com/analysis/halloween-songs-tiktok-spotify-2026/",
+    "source": "InMusic"
    },
    {
-    "title": "\"what iPad?\"",
-    "creator": "@bibacosmeticsolutions",
-    "body": "people swear on camera they do NOT own an iPad while one is very obviously hiding somewhere in the shot, and the comments turn into a where's waldo. so dumb, so good.",
-    "url": "https://postdom.com/blog/tiktok-trends",
-    "source": "Postdom"
+    "title": "\"my decoration is alive\"",
+    "body": "someone poses next to a porch skeleton and then the \"skeleton\" turns its head and waves. usually set to \"Goo Goo Muck.\" it gets me every single time.",
+    "url": "https://dromana.app/guides/halloween-tiktok-trends",
+    "source": "Dromana"
    },
    {
-    "title": "ghost photoshoots at the office",
-    "creator": "@nudestix",
-    "body": "teams are throwing white sheets over their heads, adding sunglasses, and doing a whole retro ghost photoshoot at work. we should have done this for halloween!!",
-    "url": "https://postdom.com/blog/tiktok-trends",
-    "source": "Postdom"
+    "title": "\"Message From A\"",
+    "body": "pretty little liars sound + an on-screen note signed \"-A\" calling out one very specific habit. the callouts are SO personal.",
+    "url": "https://usaneonews.com/tiktok-trends-october-2026/",
+    "source": "USA One News"
    },
    {
-    "title": "everyone's doing the \"Dip On Em\" dance",
-    "creator": "@joff_000",
-    "views": "292K",
-    "body": "a quick one-take dance to SouthMemphisHypeman's \"Dip On Em,\" usually two coworkers on a break. the sound's video count more than doubled in a few weeks.",
-    "url": "https://www.socialpilot.co/blog/tiktok-trends",
-    "source": "SocialPilot"
+    "title": "\"things you should definitely ghost\"",
+    "body": "someone in a white sheet ghost costume holds up signs of bad habits and red flags to drop. very cute, very halloween.",
+    "url": "https://usaneonews.com/tiktok-trends-october-2026/",
+    "source": "USA One News"
    }
   ]
  },
  "coolkids": {
-  "updatedAt": "2026-10-29T06:55:00-04:00",
+  "updatedAt": "2026-10-30T06:20:00-04:00",
   "items": [
    {
-    "title": "\"6-7\" (and now \"41\")",
-    "body": "6-7 is a meaningless sing-songy answer to literally any question, with a little two-handed weighing motion. 41 is the new nonsense number they pair with it. there is no meaning. that's the point.",
-    "url": "https://gabb.com/blog/teen-slang/",
-    "source": "Gabb"
+    "title": "\"lock in\"",
+    "body": "means getting seriously focused, like studying for finals or a big game. it's the gen alpha version of \"head down, let's go.\"",
+    "url": "https://genalphamagazine.com/gen-alpha-slang/",
+    "source": "Generation Alpha Magazine"
    },
    {
-    "title": "\"glazing\"",
-    "body": "means hyping someone up SO much it gets embarrassing. like a comment section that's just 40 people calling a mid video a masterpiece.",
-    "url": "https://gabb.com/blog/teen-slang/",
-    "source": "Gabb"
+    "title": "\"crash out\"",
+    "body": "means totally losing it and reacting way too dramatically. like a whole meltdown over a group chat.",
+    "url": "https://genalphamagazine.com/gen-alpha-slang/",
+    "source": "Generation Alpha Magazine"
    },
    {
-    "title": "\"aura\"",
-    "body": "basically your cool factor. walking in calm and unbothered = big aura. tripping on the stairs = minus aura. kids keep score.",
-    "url": "https://gabb.com/blog/teen-slang/",
-    "source": "Gabb"
+    "title": "\"cooked\"",
+    "body": "means you're in trouble or basically doomed. forgot the project was due today? cooked.",
+    "url": "https://genalphamagazine.com/gen-alpha-slang/",
+    "source": "Generation Alpha Magazine"
    },
    {
-    "title": "\"standing on business\"",
-    "body": "means doing exactly what you said you'd do, no excuses. kids say it like a full-on character trait.",
-    "url": "https://gabb.com/blog/teen-slang/",
-    "source": "Gabb"
+    "title": "\"fanum tax\"",
+    "body": "when someone takes a little cut of your food, like a fry or two. it comes from a streamer known for stealing food off people's plates.",
+    "url": "https://theeverymom.com/gen-alpha-slang/",
+    "source": "The Everymom"
    }
   ]
  }
