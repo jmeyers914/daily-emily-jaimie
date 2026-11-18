@@ -71,56 +71,62 @@
   ]
  },
  "tiktok": {
-  "updatedAt": "2026-11-17T06:15:00-05:00",
+  "updatedAt": "2026-11-18T06:15:00-05:00",
   "items": [
    {
-    "title": "the \"My Moon My Man\" soft launch",
-    "creator": "Finneas",
-    "body": "couples are soft-launching (or full-launching) each other to Finneas's cover of Feist's \"My Moon My Man.\" #mymoonmyman jumped 86% in a week. we're getting so many relationship reveals rn.",
-    "url": "https://newengen.com/insights/tiktok-trends/",
-    "source": "NewEngen"
+    "title": "the Jingle Bell x Brazil dance",
+    "views": "30K new videos a day",
+    "body": "arm crosses, chest taps and santa hats, solo or with up to two friends. it's the #1 new trend today with 30K new videos a day. christmas is officially here.",
+    "url": "https://viralremix.org/tiktok-trends",
+    "source": "Viral Remix"
    },
    {
-    "title": "turkey charcuterie boards",
-    "body": "people are arranging cheese, crackers and meats into a turkey shape for thanksgiving. i need to try this.",
-    "url": "https://newengen.com/insights/tiktok-trends/",
-    "source": "NewEngen"
+    "title": "the ILLIT \"Under Arrest\" dance",
+    "creator": "ILLIT",
+    "body": "a little police-cap dance, solo, with a squad or WITH A CAT. it's up 115% and still climbing.",
+    "url": "https://viralremix.org/tiktok-trends",
+    "source": "Viral Remix"
    },
    {
-    "title": "the chipmunks dance",
-    "body": "groups of three do a quick routine of jumps, kicks and spins to a sped-up chipmunk version of \"You Spin Me Round.\" so chaotic and cute.",
-    "url": "https://newengen.com/insights/tiktok-trends/",
-    "source": "NewEngen"
+    "title": "the \"tsundere hmph\"",
+    "body": "hands on hips, a stomp, arms crossed, \"hmph!\" people are doing it themselves or getting their pets to do it. extremely cute.",
+    "url": "https://viralremix.org/tiktok-trends",
+    "source": "Viral Remix"
    },
    {
-    "title": "the overhead fan transition",
-    "creator": "@milenalife.style",
-    "body": "filmed from above, the fan blades sweep across the screen and reveal a whole new outfit. very clean.",
-    "url": "https://newengen.com/insights/tiktok-trends/",
-    "source": "NewEngen"
+    "title": "the Home Alone \"Deck the Halls\" duo",
+    "body": "two people in matching pajamas, or dressed as Kevin and Harry from Home Alone, doing a little duo routine. so festive.",
+    "url": "https://viralremix.org/tiktok-trends",
+    "source": "Viral Remix"
    }
   ]
  },
  "coolkids": {
-  "updatedAt": "2026-11-17T06:15:00-05:00",
+  "updatedAt": "2026-11-18T06:15:00-05:00",
   "items": [
    {
-    "title": "gen z is the \"Letterboxd generation\"",
-    "body": "teens and twentysomethings are 40% of moviegoers now, and gen z's theater attendance is the highest it's been since the pandemic. they're even selling out silent film festivals!!",
-    "url": "https://www.ypulse.com/newsfeed/2026/11/11/gen-z-a-k-a-the-letterboxd-generation-is-having-their-cinephile-moment/",
-    "source": "YPulse"
+    "title": "gen z is the only optimistic generation at work",
+    "body": "a new Indeed report out today: gen z is the only generation with a net positive outlook on next year's job market. millennials, gen x and boomers are all negative.",
+    "url": "https://hiringlab.indeed.com/2026/11/18/gen-z-at-work/",
+    "source": "Indeed Hiring Lab"
    },
    {
-    "title": "\"eventizing\" the movies",
-    "body": "dressing up for screenings and collecting limited-edition popcorn buckets. going to the movies is a whole event again.",
-    "url": "https://www.ypulse.com/newsfeed/2026/11/11/gen-z-a-k-a-the-letterboxd-generation-is-having-their-cinephile-moment/",
-    "source": "YPulse"
+    "title": "gen z is now 24% of the workforce",
+    "body": "and they already hold 12% of manager roles. they're on track to outnumber boomers in management by 2027.",
+    "url": "https://hiringlab.indeed.com/2026/11/18/gen-z-at-work/",
+    "source": "Indeed Hiring Lab"
    },
    {
-    "title": "68% of gen z \"can't live without snacks\"",
-    "body": "YPulse says gen z wants to try viral snacks, loves nostalgic childhood ones, and is super curious about international snacks.",
-    "url": "https://www.ypulse.com/article/2026/11/10/how-gen-z-is-snacking-in-3-stats/",
-    "source": "YPulse"
+    "title": "free food > dental",
+    "body": "21% of gen z put free food in their top five benefits, vs 13% of everyone. they rank dental and retirement lower than average.",
+    "url": "https://hiringlab.indeed.com/2026/11/18/gen-z-at-work/",
+    "source": "Indeed Hiring Lab"
+   },
+   {
+    "title": "58% want a mentor, 25% have one",
+    "body": "that's a 33-point gap between gen z workers who want a mentor and the ones whose job actually gives them one.",
+    "url": "https://hiringlab.indeed.com/2026/11/18/gen-z-at-work/",
+    "source": "Indeed Hiring Lab"
    }
   ]
  }
