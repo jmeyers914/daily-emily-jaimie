@@ -71,44 +71,57 @@
   ]
  },
  "tiktok": {
-  "updatedAt": "2026-11-26T06:15:00-05:00",
+  "updatedAt": "2026-11-27T06:15:00-05:00",
   "items": [
    {
-    "title": "\"how i've looked throughout the year\"",
-    "body": "a month-by-month photo montage of yourself with that line on screen. it's brand new this week, so expect a lot of these as the year wraps up.",
-    "url": "https://virlo.ai/trends",
-    "source": "Virlo"
+    "title": "TikTok Shop's black friday LIVEs",
+    "body": "TikTok Shop is calling this its biggest LIVE shopping moment ever: daily live-only deals through nov 30, up to 60% off viral stuff. in the UK, 53% of gen z say they'll shop it this weekend.",
+    "url": "https://channelx.world/2026/11/tiktok-shop-black-friday-sale-launched-ahead-of-biggest-live-shopping-moment-to-date/",
+    "source": "ChannelX"
    },
    {
-    "title": "\"don't let a fanatic see this\"",
-    "creator": "@sidelinedry.us",
-    "views": "2.7M",
-    "body": "people show a super niche gift idea with a warning like \"don't let a hockey mom see this.\" it's basically a gift guide in disguise, and very good for holiday shopping!!",
+    "title": "a 24-hour electronics livestream",
+    "creator": "@triedbymrandmrsp",
+    "body": "a creator couple is hosting a 24-hour electronics LIVE on TikTok Shop starting tomorrow morning (UK time). 24 hours of gadgets. i could never.",
+    "url": "https://channelx.world/2026/11/tiktok-shop-black-friday-sale-launched-ahead-of-biggest-live-shopping-moment-to-date/",
+    "source": "ChannelX"
+   },
+   {
+    "title": "\"he wanna pay full price\" is still climbing",
+    "creator": "@joejonas",
+    "views": "3.9M",
+    "body": "the SNL Druski clip about paying full price is up another 220% this week, which feels very appropriate for black friday.",
     "url": "https://virlo.ai/trends",
     "source": "Virlo"
    }
   ]
  },
  "coolkids": {
-  "updatedAt": "2026-11-26T06:15:00-05:00",
+  "updatedAt": "2026-11-27T06:15:00-05:00",
   "items": [
    {
-    "title": "85% of gen z are doing thanksgiving",
-    "body": "YPulse says 85% of 13-24 year olds are celebrating today, and most of them plan to actually cook. happy thanksgiving!!",
-    "url": "https://www.ypulse.com/article/2026/11/25/gen-zs-thanksgiving-plans-this-year/",
-    "source": "YPulse"
+    "title": "gen z LOVES a dupe",
+    "body": "49% of gen z have bought a dupe, the highest of any generation. why pay full price when the copy is right there.",
+    "url": "https://endearhq.com/blog/gen-z-holiday-shopping-trends",
+    "source": "Endear"
    },
    {
-    "title": "the parade and football still win",
-    "body": "live tv, the macy's parade and football, is still a big part of gen z's thanksgiving. some things never change.",
-    "url": "https://www.ypulse.com/article/2026/11/25/gen-zs-thanksgiving-plans-this-year/",
-    "source": "YPulse"
+    "title": "black friday is still their thing",
+    "body": "McKinsey says gen z is the most likely generation to start holiday shopping on black friday. and more of them plan to shop in stores this year (37%, up from 27%).",
+    "url": "https://endearhq.com/blog/gen-z-holiday-shopping-trends",
+    "source": "Endear"
    },
    {
-    "title": "nostalgia is the whole vibe",
-    "body": "YPulse says nostalgia is at the heart of how gen z celebrates. same dishes, same rituals, same family chaos.",
-    "url": "https://www.ypulse.com/article/2026/11/25/gen-zs-thanksgiving-plans-this-year/",
-    "source": "YPulse"
+    "title": "the influencer IS the shopping list",
+    "body": "35% of gen z find products through influencers (vs 19% of everyone else), and 64% research products on social media first.",
+    "url": "https://endearhq.com/blog/gen-z-holiday-shopping-trends",
+    "source": "Endear"
+   },
+   {
+    "title": "Y2K is still in the cart",
+    "body": "cargo pants, claw clips and baby tees are all still on gen z's lists this holiday season.",
+    "url": "https://endearhq.com/blog/gen-z-holiday-shopping-trends",
+    "source": "Endear"
    }
   ]
  }
